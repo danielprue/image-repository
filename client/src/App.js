@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div className='App'>
-      <Layout>
+      <Layout className='layout'>
         <Header className='header'>
           <div className='header-container'>
             <HomeOutlined className='home-icon' />
