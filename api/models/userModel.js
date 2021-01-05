@@ -8,6 +8,7 @@ module.exports = {
   addUser,
   findUserById,
   findUserByUsername,
+  getUploadedPhotosByUserId,
   deleteUser,
 };
 
@@ -28,6 +29,11 @@ function findUserById(id) {
 // findUserByUsername -- query user table and return row with matching username
 function findUserByUsername(username) {
   return userdb('users').where('username', username);
+}
+
+// getUploadedPhotosByUserId -- query user table and return only uploaded_photos from row with matching id
+function getUploadedPhotosByUserId(id) {
+  return userdb('users').select('uploaded_photos').where({ id }).first();
 }
 
 // deleteUser -- remove row from users table with matching id

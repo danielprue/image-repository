@@ -1,24 +1,26 @@
 var express = require('express');
 var router = express.Router();
 
-// send username/password, add new user to database and return the object
-router.post('/api/register', (req, res, next) => {
-  res.send('API is working!');
-});
-
-// send username/password, match against table data, then login if valid/error if invalid
-router.post('/api/login', (req, res, next) => {
-  res.send('');
-});
+const User = require('../models/userModel');
 
 // returns list of photo ids from specified user
-router.get('/api/users/:userid/photos', (req, res, next) => {
-  res.send('');
+router.get('/:userid/photos', (req, res, next) => {
+  const { userid } = req.params;
+
+  User.getUploadedPhotosByUserId(userid)
+    .then((user) => res.status(200).json(user))
+    .catch((err) => next(err));
 });
 
 // deletes a user and all photos uploaded by them
-router.delete('/api/users/:userid', (req, res, next) => {
-  res.send('');
+router.delete('/:userid', (req, res, next) => {
+  const { userid } = req.params;
+
+  User.deleteUser(userid)
+    .then(() =>
+      res.status(200).json({ message: `successfully deleted user ${userid}` })
+    )
+    .catch((err) => next(err));
 });
 
 module.exports = router;
