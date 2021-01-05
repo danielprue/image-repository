@@ -5,12 +5,13 @@ exports.up = function (knex) {
       tbl.string('username').notNullable();
       tbl.string('password').notNullable();
       tbl
-        .specificType('uploaded_photos', 'text[]')
+        .specificType('uploaded_photos', 'number[]')
         .notNullable()
         .defaultTo('{}');
     })
     .createTable('photos', (tbl) => {
       tbl.increments('id').primary();
+      tbl.string('name').notNullable;
       tbl.string('image_path').notNullable();
       tbl.string('descrition').notNullable().defaultTo('');
       tbl.specificType('tags', 'text[]').notNullable().defaultTo('{}');
