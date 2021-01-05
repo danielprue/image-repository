@@ -9,6 +9,7 @@ const photodb = require('../dbConfig');
 module.exports = {
   addPhoto,
   deletePhoto,
+  deletePhotos,
   getPhotoById,
   getPhotosByIds,
   getPhotosByTag,
@@ -27,6 +28,11 @@ function addPhoto(photo) {
 // deletePhoto -- remove row from photo table with matching id
 function deletePhoto(id) {
   return photodb('photos').where({ id }).first().delete();
+}
+
+// deletePhotos -- remove rows from photo table with matching ids
+function deletePhotos(ids) {
+  return photodb('photos').whereIn('id', ids).delete();
 }
 
 // getPhotoById -- query table for row that matches id
