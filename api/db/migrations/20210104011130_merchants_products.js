@@ -5,7 +5,7 @@ exports.up = function (knex) {
       tbl.string('username').notNullable();
       tbl.string('password').notNullable();
       tbl
-        .specificType('uploaded_photos', 'number[]')
+        .specificType('uploaded_photos', 'int[]')
         .notNullable()
         .defaultTo('{}');
     })
@@ -13,12 +13,12 @@ exports.up = function (knex) {
       tbl.increments('id').primary();
       tbl.string('name').notNullable;
       tbl.string('image_path').notNullable();
-      tbl.string('descrition').notNullable().defaultTo('');
+      tbl.string('description').notNullable().defaultTo('');
       tbl.specificType('tags', 'text[]').notNullable().defaultTo('{}');
-      tbl.integer('uploader').references('users.id');
+      tbl.integer('uploader').notNullable();
     });
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTableIfExists('users').dropTableIfExists('photos');
+  return knex.schema.dropTableIfExists('photos').dropTableIfExists('users');
 };

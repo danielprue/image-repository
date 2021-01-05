@@ -1,11 +1,11 @@
-const usersData = require('./data/seed_users');
+const photoData = require('./data/seed_photos');
 
 exports.seed = function (knex) {
   // Deletes ALL existing entries
-  return knex('users')
+  return knex('photos')
     .del()
     .then(function () {
       // Inserts seed entries
-      return knex('users').insert(usersData);
+      return knex('photos').insert(photoData);
     });
 };
