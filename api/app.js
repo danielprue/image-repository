@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var testAPIRouter = require('./routes/testAPI');
 var userRouter = require('./routes/users');
 var authRouter = require('./routes/authRoutes');
+var photosRouter = require('./routes/photos');
 
 var app = express();
 const port = process.env.PORT || 3001;
@@ -24,6 +25,7 @@ app.use('/', indexRouter);
 app.use('/testAPI', testAPIRouter);
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/photos', photosRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

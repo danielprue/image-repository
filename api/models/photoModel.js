@@ -7,6 +7,7 @@ const photodb = require('../dbConfig');
 // uploader
 
 module.exports = {
+  getAllPhotos,
   addPhoto,
   deletePhoto,
   deletePhotos,
@@ -15,6 +16,11 @@ module.exports = {
   getPhotosByTag,
   getPhotosBySearch,
 };
+
+// getAllPhotos -- returns all rows from photos
+function getAllPhotos() {
+  return photodb('photos');
+}
 
 // addPhoto -- add row to photo table
 function addPhoto(photo) {
@@ -47,7 +53,7 @@ function getPhotosByIds(ids) {
 
 // getPhotosByTag -- query table for photos that contain a given tag
 function getPhotosByTag(tag) {
-  return photodb('photos').where('tags', '@>', tag);
+  return photodb('photos').where('tags', '@>', [tag]);
 }
 
 // getPhotosBySearch -- query table for photos with names like a search term

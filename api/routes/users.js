@@ -9,7 +9,11 @@ router.get('/:userid/photos', (req, res, next) => {
   const { userid } = req.params;
 
   User.getUploadedPhotosByUserId(userid)
-    .then((user) => res.status(200).json(user))
+    .then((photo_ids) => {
+      Photos.getPhotosByIds(photo_ids['uploaded_photos'])
+        .then((photos) => res.status(200).json(photos))
+        .catch((err) => next(err));
+    })
     .catch((err) => next(err));
 });
 
