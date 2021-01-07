@@ -13,6 +13,8 @@ exports.up = function (knex) {
       tbl.increments('id').primary();
       tbl.string('name').notNullable;
       tbl.string('image_path').notNullable();
+      tbl.integer('height').notNullable();
+      tbl.integer('width').notNullable();
       tbl.string('description').notNullable().defaultTo('');
       tbl.specificType('tags', 'text[]').notNullable().defaultTo('{}');
       tbl.integer('uploader').notNullable();

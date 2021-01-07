@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import ImageDetails from './pages/ImageDetails';
 
-import './App.css';
+import './styling/App.css';
 import 'antd/dist/antd.css';
 
 const { Header, Content, Footer } = Layout;

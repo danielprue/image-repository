@@ -1,14 +1,19 @@
 const router = require('express').Router();
 
+const { intersect } = require('../dbConfig');
 const Photos = require('../models/photoModel');
 
-router.get('/batch', (req, res, next) => {
-  const { photoIds } = req.body;
+router.get('/batch/:photoIds', (req, res, next) => {
+  let photoIds = req.params.photoIds.split(',');
+  photoIds = photoIds.map((id) => {
+    return parseInt(id);
+  });
   Photos.getPhotosByIds(photoIds)
     .then((photos) => {
       res.status(200).json(photos);
     })
     .catch((err) => {
+      console.log('error');
       next(err);
     });
 });
