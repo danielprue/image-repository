@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 
-import { Card } from 'antd';
+import { Card, Tag } from 'antd';
 import { Image } from 'cloudinary-react';
+
+import '../styling/ImageDetails.css';
 
 const ImageDetails = () => {
   const [image, setImage] = useState(null);
@@ -32,7 +34,17 @@ const ImageDetails = () => {
               width='512'
             />
           </div>
-          <Card title={image.name}>{image.description}</Card>
+          <Card title={image.name} className='image-info'>
+            <p>{image.description}</p>
+            <p>{`${image.width} x ${image.height}`}</p>
+            {image.tags.map((value, i) => {
+              return (
+                <Tag key={i} className='image-info-tag'>
+                  {value}
+                </Tag>
+              );
+            })}
+          </Card>
         </>
       ) : (
         <></>

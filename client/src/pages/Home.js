@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import JustifiedGrid from 'react-justified-grid';
 import { useHistory } from 'react-router-dom';
 
+import { Image, Transformation } from 'cloudinary-react';
+
 import '../styling/Home.css';
 
 const Home = (props) => {
@@ -56,28 +58,21 @@ const Home = (props) => {
         {(processedImages) => (
           <React.Fragment>
             {processedImages.map((image, i) => {
-              const {
-                alt,
-                src,
-                width,
-                height,
-                left,
-                top,
-                originalData,
-              } = image;
+              const { width, height, left, top, originalData } = image;
               return (
                 <div
                   key={i}
                   style={{ position: 'absolute', left: left, top: top }}
                 >
-                  <img
+                  <Image
                     id={originalData.public_id}
-                    src={src}
-                    alt={alt}
+                    cloudName='devm7fql3'
+                    public_id={originalData.public_id}
                     width={width}
                     height={height}
                     onClick={handlePicClick}
-                  />
+                    loading='lazy'
+                  ></Image>
                 </div>
               );
             })}

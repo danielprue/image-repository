@@ -55,7 +55,7 @@ function App() {
             <Login />
           </Route>
         </Content>
-        <Footer>
+        <Footer className='footer'>
           <GithubOutlined className='github-icon' />
         </Footer>
       </Layout>

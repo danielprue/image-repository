@@ -1,0 +1,13 @@
+.image-details {
+  height: calc(100vh - 64px - 85.5px);
+  margin: auto;
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.image-info {
+  text-align: left;
+}
