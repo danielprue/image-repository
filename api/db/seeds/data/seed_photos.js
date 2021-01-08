@@ -1,6 +1,7 @@
 module.exports = [
   {
     name: 'Row of Cactus',
+    public_id: 'thomas-verbruggen-5A06OWU6Wuc-unsplash_furz94',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633859/thomas-verbruggen-5A06OWU6Wuc-unsplash_furz94.jpg',
     width: 5760,
@@ -11,6 +12,7 @@ module.exports = [
   },
   {
     name: 'Brick Wall with Ivy',
+    public_id: 'mitchell-orr-YSjtPzUV64s-unsplash_sg4wya',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633858/mitchell-orr-YSjtPzUV64s-unsplash_sg4wya.jpg',
     width: 4627,
@@ -21,6 +23,7 @@ module.exports = [
   },
   {
     name: 'Castle Grounds',
+    public_id: 'annie-spratt-z05Ge-TuDB4-unsplash_kj5wzv',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633857/annie-spratt-z05Ge-TuDB4-unsplash_kj5wzv.jpg',
     width: 4627,
@@ -31,6 +34,7 @@ module.exports = [
   },
   {
     name: 'The Plant Room',
+    public_id: 'prudence-earl-NwBx723XaHw-unsplash_n5g1pl',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633857/prudence-earl-NwBx723XaHw-unsplash_n5g1pl.jpg',
     width: 2352,
@@ -41,6 +45,7 @@ module.exports = [
   },
   {
     name: 'Lavender Sunset',
+    public_id: 'irina-iriser-NlSAbCHXFXU-unsplash_vg0do3',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633857/irina-iriser-NlSAbCHXFXU-unsplash_vg0do3.jpg',
     width: 5674,
@@ -51,6 +56,7 @@ module.exports = [
   },
   {
     name: 'The Front Porch',
+    public_id: 'chris-lawton-TxIwZ4l7beE-unsplash_y5iyz4',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633857/chris-lawton-TxIwZ4l7beE-unsplash_y5iyz4.jpg',
     width: 6000,
@@ -61,6 +67,7 @@ module.exports = [
   },
   {
     name: 'Foggy Stone Path',
+    public_id: 'john-salzarulo-9MMd2uRpfvc-unsplash_spjovc',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633857/john-salzarulo-9MMd2uRpfvc-unsplash_spjovc.jpg',
     width: 2848,
@@ -71,6 +78,7 @@ module.exports = [
   },
   {
     name: 'Flowers',
+    public_id: 'annie-spratt-MvA86_qwpEI-unsplash_llgqdi',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633856/annie-spratt-MvA86_qwpEI-unsplash_llgqdi.jpg',
     width: 3280,
@@ -81,6 +89,7 @@ module.exports = [
   },
   {
     name: 'Sweater and a Bit of Grass',
+    public_id: 'giulia-bertelli-UT1OrSlHZnE-unsplash_kjwtjb',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633854/giulia-bertelli-UT1OrSlHZnE-unsplash_kjwtjb.jpg',
     width: 1984,
@@ -91,6 +100,7 @@ module.exports = [
   },
   {
     name: 'Smol Little Succulents',
+    public_id: 'annie-spratt-ncQ2sguVlgo-unsplash_uphm5n',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633854/annie-spratt-ncQ2sguVlgo-unsplash_uphm5n.jpg',
     width: 2090,
@@ -101,6 +111,7 @@ module.exports = [
   },
   {
     name: 'Cute Dog Outside',
+    public_id: 'zach-lucero-fc7-lm0uOak-unsplash_v8riaq',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633853/zach-lucero-fc7-lm0uOak-unsplash_v8riaq.jpg',
     width: 3492,
@@ -111,6 +122,7 @@ module.exports = [
   },
   {
     name: 'Grand Canyon Pupper',
+    public_id: 'patrick-hendry-jd0hS7Vhn_A-unsplash_zb5ydo',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633852/patrick-hendry-jd0hS7Vhn_A-unsplash_zb5ydo.jpg',
     width: 8688,
@@ -121,6 +133,7 @@ module.exports = [
   },
   {
     name: 'Dog with Cute Red Hat',
+    public_id: 'tamas-pap-ghVDwGVWmgg-unsplash_rwhkle',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633850/tamas-pap-ghVDwGVWmgg-unsplash_rwhkle.jpg',
     width: 7112,
@@ -131,6 +144,7 @@ module.exports = [
   },
   {
     name: 'Awkard Family Photo Dog',
+    public_id: 'victor-grabarczyk-2pbnDRhXc6Q-unsplash_tbvtad',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633850/victor-grabarczyk-2pbnDRhXc6Q-unsplash_tbvtad.jpg',
     width: 3786,
@@ -141,6 +155,7 @@ module.exports = [
   },
   {
     name: 'So Small on the Grass Meta Photo Shoot',
+    public_id: 'pooya-ramezani-oOE0VVLwWYo-unsplash_bfpgn9',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633850/pooya-ramezani-oOE0VVLwWYo-unsplash_bfpgn9.jpg',
     width: 6000,
@@ -151,6 +166,7 @@ module.exports = [
   },
   {
     name: 'America Bandana Dog',
+    public_id: 'martin-castro-SGBGU5ZhENo-unsplash_ztbcjn',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633849/martin-castro-SGBGU5ZhENo-unsplash_ztbcjn.jpg',
     width: 4288,
@@ -161,6 +177,7 @@ module.exports = [
   },
   {
     name: 'Gorgeous Husky Hours',
+    public_id: 'liviu-roman-mNmOgYtwVpQ-unsplash_f1qvcs',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633848/liviu-roman-mNmOgYtwVpQ-unsplash_f1qvcs.jpg',
     width: 4274,
@@ -171,6 +188,7 @@ module.exports = [
   },
   {
     name: 'Dog Sticking Head Out of Car Window',
+    public_id: 'jerome-moqxfy5xARE-unsplash_khvvbc',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633847/jerome-moqxfy5xARE-unsplash_khvvbc.jpg',
     width: 4083,
@@ -181,6 +199,7 @@ module.exports = [
   },
   {
     name: "Time for Walk Let's Goooooooo",
+    public_id: 'jamie-street-cEwJ_ckjFDo-unsplash_vso1rh',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633847/jamie-street-cEwJ_ckjFDo-unsplash_vso1rh.jpg',
     width: 3432,
@@ -191,6 +210,7 @@ module.exports = [
   },
   {
     name: 'Napkin Tucked so Dog Can Eat Neatly',
+    public_id: 'mark-fletcher-brown-E9pXiKUGjPU-unsplash_azpxe0',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633847/mark-fletcher-brown-E9pXiKUGjPU-unsplash_azpxe0.jpg',
     width: 3744,
@@ -201,6 +221,7 @@ module.exports = [
   },
   {
     name: 'Doge Side Eye',
+    public_id: 'felipepelaquim-9JuzOoPcuHI-unsplash_sqsocv',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633846/felipepelaquim-9JuzOoPcuHI-unsplash_sqsocv.jpg',
     width: 4240,
@@ -211,6 +232,7 @@ module.exports = [
   },
   {
     name: 'Dog Staring at Computer',
+    public_id: 'kyle-hanson-1pyqUh8Jx3E-unsplash_dz4nmr',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633845/kyle-hanson-1pyqUh8Jx3E-unsplash_dz4nmr.jpg',
     width: 4032,
@@ -221,6 +243,7 @@ module.exports = [
   },
   {
     name: 'Dog Keeping Your Seat Warm',
+    public_id: 'andrew-welch-lqm93sV0L_8-unsplash_qfprev',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633845/andrew-welch-lqm93sV0L_8-unsplash_qfprev.jpg',
     width: 6000,
@@ -231,6 +254,7 @@ module.exports = [
   },
   {
     name: 'Dog Pot Holding a Cute Plant',
+    public_id: 'jose-hernandez-uribe-eazBlWNjIGg-unsplash_eys8vz',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633845/jose-hernandez-uribe-eazBlWNjIGg-unsplash_eys8vz.jpg',
     width: 3648,
@@ -241,6 +265,7 @@ module.exports = [
   },
   {
     name: 'Happy Dog on the Rocks',
+    public_id: 'bogomil-mihaylov-SuXtC_x0Foc-unsplash_bhus0m',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633844/bogomil-mihaylov-SuXtC_x0Foc-unsplash_bhus0m.jpg',
     width: 3456,
@@ -251,6 +276,7 @@ module.exports = [
   },
   {
     name: 'Yearning on the Sunflowers',
+    public_id: 'darrell-fraser-Zfcb8ntesBo-unsplash_vuslrq',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633844/darrell-fraser-Zfcb8ntesBo-unsplash_vuslrq.jpg',
     width: 5760,
@@ -261,6 +287,7 @@ module.exports = [
   },
   {
     name: 'Grassy Dog Wildflowers',
+    public_id: 'angel-luciano-LATYeZyw88c-unsplash_achoi6',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633843/angel-luciano-LATYeZyw88c-unsplash_achoi6.jpg',
     width: 6000,
@@ -271,6 +298,7 @@ module.exports = [
   },
   {
     name: 'Dog vs Computer Battle for Attention',
+    public_id: 'ayla-verschueren-mnHo8JI0Paw-unsplash_rw5ehu',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633843/ayla-verschueren-mnHo8JI0Paw-unsplash_rw5ehu.jpg',
     width: 4608,
@@ -281,6 +309,7 @@ module.exports = [
   },
   {
     name: 'Dog Tongue',
+    public_id: 'david-erades-nA_9WzHtHIE-unsplash_p8ekdp',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633843/david-erades-nA_9WzHtHIE-unsplash_p8ekdp.jpg',
     width: 5184,
@@ -291,6 +320,7 @@ module.exports = [
   },
   {
     name: 'Old Mac',
+    public_id: 'matt-mech-KH0o-C1Z7lU-unsplash_slqcub',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633837/matt-mech-KH0o-C1Z7lU-unsplash_slqcub.jpg',
     width: 6000,
@@ -301,6 +331,7 @@ module.exports = [
   },
   {
     name: 'Desk Vista',
+    public_id: 'tanner-van-dera-oaQ2mTeaP7o-unsplash_otojv5',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633837/tanner-van-dera-oaQ2mTeaP7o-unsplash_otojv5.jpg',
     width: 3024,
@@ -311,6 +342,7 @@ module.exports = [
   },
   {
     name: 'Outdoor Study Time',
+    public_id: 'jaeyoung-geoffrey-kang-IdhfwYkPGAs-unsplash_bnb3gl',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633836/jaeyoung-geoffrey-kang-IdhfwYkPGAs-unsplash_bnb3gl.jpg',
     width: 3208,
@@ -321,6 +353,7 @@ module.exports = [
   },
   {
     name: 'Mechanical Keyboard',
+    public_id: 'nihonorway-graphy-nCvi-gS5r88-unsplash_vcqlod',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633835/nihonorway-graphy-nCvi-gS5r88-unsplash_vcqlod.jpg',
     width: 4096,
@@ -331,6 +364,7 @@ module.exports = [
   },
   {
     name: 'Laptop with Small Plant',
+    public_id: 'kari-shea-1SAnrIxw5OY-unsplash_i5eyx2',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633835/kari-shea-1SAnrIxw5OY-unsplash_i5eyx2.jpg',
     width: 5243,
@@ -341,6 +375,7 @@ module.exports = [
   },
   {
     name: 'Typewriter vs Computer',
+    public_id: 'glenn-carstens-peters-1F4MukO0UNg-unsplash_g855r7',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633835/glenn-carstens-peters-1F4MukO0UNg-unsplash_g855r7.jpg',
     width: 4131,
@@ -351,6 +386,7 @@ module.exports = [
   },
   {
     name: 'Computer and Succulent',
+    public_id: 'aleksander-vlad-jiVeo0i1EB4-unsplash_sd0tov',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633834/aleksander-vlad-jiVeo0i1EB4-unsplash_sd0tov.jpg',
     width: 6000,
@@ -361,6 +397,7 @@ module.exports = [
   },
   {
     name: 'Keyboard Closeup',
+    public_id: 'christian-wiediger-WkfDrhxDMC8-unsplash_dxypca',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633834/christian-wiediger-WkfDrhxDMC8-unsplash_dxypca.jpg',
     width: 6000,
@@ -371,6 +408,7 @@ module.exports = [
   },
   {
     name: 'Type to the Left',
+    public_id: 'damian-zaleski-RYyr-k3Ysqg-unsplash_oeq8tu',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633834/damian-zaleski-RYyr-k3Ysqg-unsplash_oeq8tu.jpg',
     width: 3588,
@@ -381,6 +419,7 @@ module.exports = [
   },
   {
     name: 'Laptop Typer',
+    public_id: 'glenn-carstens-peters-npxXWgQ33ZQ-unsplash_wlqy4h',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633834/glenn-carstens-peters-npxXWgQ33ZQ-unsplash_wlqy4h.jpg',
     width: 4076,
@@ -391,6 +430,7 @@ module.exports = [
   },
   {
     name: 'Magestic Tropical Cat',
+    public_id: 'rana-sawalha-X7UR0BDz-UY-unsplash_p3dsgq',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633824/rana-sawalha-X7UR0BDz-UY-unsplash_p3dsgq.jpg',
     width: 4535,
@@ -401,6 +441,7 @@ module.exports = [
   },
   {
     name: 'White Longhair Cat on the Bed',
+    public_id: 'jeanie-de-klerk-UTVfyq6ZlBU-unsplash_g71wr9',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633822/jeanie-de-klerk-UTVfyq6ZlBU-unsplash_g71wr9.jpg',
     width: 6000,
@@ -411,6 +452,7 @@ module.exports = [
   },
   {
     name: 'Basket of Kittens',
+    public_id: 'the-lucky-neko-2JcixB1Ky3I-unsplash_r84dpn',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633822/the-lucky-neko-2JcixB1Ky3I-unsplash_r84dpn.jpg',
     width: 4233,
@@ -421,6 +463,7 @@ module.exports = [
   },
   {
     name: 'Rare Feral Hunter at Golden Hour',
+    public_id: 'marko-blazevic-YYjjtbQrsqw-unsplash_de3okb',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633822/marko-blazevic-YYjjtbQrsqw-unsplash_de3okb.jpg',
     width: 6000,
@@ -431,6 +474,7 @@ module.exports = [
   },
   {
     name: 'Proud Lord of Venice',
+    public_id: 'lloyd-dirks-R1oSj2m-7Ks-unsplash_ulcvyi',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633821/lloyd-dirks-R1oSj2m-7Ks-unsplash_ulcvyi.jpg',
     width: 3181,
@@ -441,6 +485,7 @@ module.exports = [
   },
   {
     name: 'Calico Twins',
+    public_id: 'justin-sinclair-0ptOFauN7n8-unsplash_sgwzta',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633821/justin-sinclair-0ptOFauN7n8-unsplash_sgwzta.jpg',
     width: 6016,
@@ -451,6 +496,7 @@ module.exports = [
   },
   {
     name: 'Cat and Butterfly',
+    public_id: 'karina-vorozheeva-rW-I87aPY5Y-unsplash_rfdzzc',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633820/karina-vorozheeva-rW-I87aPY5Y-unsplash_rfdzzc.jpg',
     width: 3456,
@@ -461,6 +507,7 @@ module.exports = [
   },
   {
     name: 'Cat Nap',
+    public_id: 'iz-phil-pdALzg0yN-8-unsplash_zplc7p',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633819/iz-phil-pdALzg0yN-8-unsplash_zplc7p.jpg',
     width: 3024,
@@ -471,6 +518,7 @@ module.exports = [
   },
   {
     name: 'Black Cat on the Streets',
+    public_id: 'houssam-korichi-UMyfDjQ6Ep8-unsplash_b181cq',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633818/houssam-korichi-UMyfDjQ6Ep8-unsplash_b181cq.jpg',
     width: 3456,
@@ -481,6 +529,7 @@ module.exports = [
   },
   {
     name: 'Cat Looking at Cat Pics',
+    public_id: 'chris-barbalis-n2M2SBQE6Iw-unsplash_lzps6g',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633818/chris-barbalis-n2M2SBQE6Iw-unsplash_lzps6g.jpg',
     width: 3648,
@@ -491,6 +540,7 @@ module.exports = [
   },
   {
     name: 'Cat Eyes',
+    public_id: 'dan-wayman-Paw3cZH_YCY-unsplash_gc8sq3',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633818/dan-wayman-Paw3cZH_YCY-unsplash_gc8sq3.jpg',
     width: 6000,
@@ -501,6 +551,7 @@ module.exports = [
   },
   {
     name: 'Cat by Corn Plant',
+    public_id: 'ergita-sela-M-zk3ul5M1A-unsplash_rp3fpt',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633818/ergita-sela-M-zk3ul5M1A-unsplash_rp3fpt.jpg',
     width: 3999,
@@ -511,6 +562,7 @@ module.exports = [
   },
   {
     name: 'Cat Reach',
+    public_id: 'alvan-nee-ZCHj_2lJP00-unsplash_v4wv6a',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633817/alvan-nee-ZCHj_2lJP00-unsplash_v4wv6a.jpg',
     width: 5304,
@@ -521,6 +573,7 @@ module.exports = [
   },
   {
     name: 'Very Blue Eyes',
+    public_id: 'carol-petri-MiaEop5bnqQ-unsplash_hcj0bs',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633816/carol-petri-MiaEop5bnqQ-unsplash_hcj0bs.jpg',
     width: 3240,
@@ -531,6 +584,7 @@ module.exports = [
   },
   {
     name: 'Pls Be Nice to Me',
+    public_id: 'daniel-octavian-Wzj7rBxxMaw-unsplash_shl3aq',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633816/daniel-octavian-Wzj7rBxxMaw-unsplash_shl3aq.jpg',
     width: 3057,
@@ -541,6 +595,7 @@ module.exports = [
   },
   {
     name: 'Dog on the Bed (Adorable)',
+    public_id: 'roberto-nickson-gRHEt2kF3NU-unsplash_quykxe',
     image_path:
       'https://res.cloudinary.com/devm7fql3/image/upload/v1609633849/roberto-nickson-gRHEt2kF3NU-unsplash_quykxe.jpg',
     width: 3648,

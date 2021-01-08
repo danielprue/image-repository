@@ -12,6 +12,7 @@ module.exports = {
   deletePhoto,
   deletePhotos,
   getPhotoById,
+  getPhotoByPublicId,
   getPhotosByIds,
   getPhotosByTag,
   getPhotosBySearch,
@@ -44,6 +45,11 @@ function deletePhotos(ids) {
 // getPhotoById -- query table for row that matches id
 function getPhotoById(id) {
   return photodb('photos').where({ id }).first();
+}
+
+//getPhotoByPublicId -- query table for row that matches cloudinary id
+function getPhotoByPublicId(public_id) {
+  return photodb('photos').where({ public_id }).first();
 }
 
 // getPhotosByIds -- query table for multiple ids

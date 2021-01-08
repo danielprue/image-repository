@@ -1,5 +1,5 @@
 // import { useEffect, useState } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, useHistory } from 'react-router-dom';
 
 import { Layout } from 'antd';
 import { HomeOutlined, GithubOutlined } from '@ant-design/icons';
@@ -27,12 +27,17 @@ function App() {
   //   callAPI();
   // }, []);
 
+  const history = useHistory();
+  const handleHomeClick = () => {
+    history.push('/');
+  };
+
   return (
     <div className='App'>
       <Layout className='layout'>
         <Header className='header'>
           <div className='header-container'>
-            <HomeOutlined className='home-icon' />
+            <HomeOutlined className='home-icon' onClick={handleHomeClick} />
             {/* make this clickable to go home */}
             {/* Home button, login/logout */}
           </div>
@@ -42,7 +47,7 @@ function App() {
             <Home />
           </Route>
 
-          <Route path='/image'>
+          <Route path='/image/:id'>
             <ImageDetails />
           </Route>
 

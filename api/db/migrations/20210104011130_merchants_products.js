@@ -11,7 +11,8 @@ exports.up = function (knex) {
     })
     .createTable('photos', (tbl) => {
       tbl.increments('id').primary();
-      tbl.string('name').notNullable;
+      tbl.string('public_id').notNullable();
+      tbl.string('name').notNullable();
       tbl.string('image_path').notNullable();
       tbl.integer('height').notNullable();
       tbl.integer('width').notNullable();
