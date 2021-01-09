@@ -9,3 +9,14 @@
   max-width: 1400px;
   margin: auto;
 }
+
+.grid-container img {
+  opacity: 1;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.grid-container img:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
