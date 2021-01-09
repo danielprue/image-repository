@@ -141,7 +141,12 @@ function App() {
           </Route>
         </Content>
         <Footer className='footer'>
-          <GithubOutlined className='github-icon' />
+          <a
+            href='https://github.com/danielprue/image-repository'
+            className='github-icon-link'
+          >
+            <GithubOutlined className='github-icon' />
+          </a>
         </Footer>
       </Layout>
     </div>

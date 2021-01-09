@@ -54,7 +54,7 @@
 
 .header-container {
   width: 100%;
-  max-width: 1024px;
+  max-width: 1400px;
   height: 100%;
   margin: auto;
   display: flex;
@@ -65,6 +65,14 @@
 .home-icon {
   font-size: 36px;
   color: #fff !important;
+}
+
+.github-icon-link {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.github-icon-link:hover {
+  color: rgba(0, 0, 0, 0.85);
 }
 
 .github-icon {
