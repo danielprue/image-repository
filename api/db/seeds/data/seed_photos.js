@@ -8,7 +8,6 @@ module.exports = [
     height: 3646,
     description: 'PC: https://unsplash.com/photos/5A06OWU6Wuc',
     tags: ['plants'],
-    uploader: 0,
   },
   {
     name: 'Brick Wall with Ivy',
@@ -19,7 +18,6 @@ module.exports = [
     height: 3085,
     description: 'PC: https://unsplash.com/photos/YSjtPzUV64s',
     tags: ['plants'],
-    uploader: 0,
   },
   {
     name: 'Castle Grounds',
@@ -30,7 +28,6 @@ module.exports = [
     height: 3170,
     description: 'PC: https://unsplash.com/photos/z05Ge-TuDB4',
     tags: ['plants'],
-    uploader: 0,
   },
   {
     name: 'The Plant Room',
@@ -41,7 +38,6 @@ module.exports = [
     height: 1568,
     description: 'PC: https://unsplash.com/photos/NwBx723XaHw',
     tags: ['plants'],
-    uploader: 0,
   },
   {
     name: 'Lavender Sunset',
@@ -52,7 +48,6 @@ module.exports = [
     height: 3783,
     description: 'PC: https://unsplash.com/photos/NlSAbCHXFXU',
     tags: ['plants', 'outdoors'],
-    uploader: 0,
   },
   {
     name: 'The Front Porch',
@@ -63,7 +58,6 @@ module.exports = [
     height: 4001,
     description: 'PC: https://unsplash.com/photos/TxIwZ4l7beE',
     tags: ['plants'],
-    uploader: 0,
   },
   {
     name: 'Foggy Stone Path',
@@ -74,7 +68,6 @@ module.exports = [
     height: 4288,
     description: 'PC: https://unsplash.com/photos/9MMd2uRpfvc',
     tags: ['plants', 'outdoors'],
-    uploader: 0,
   },
   {
     name: 'Flowers',
@@ -85,7 +78,6 @@ module.exports = [
     height: 4928,
     description: 'PC: https://unsplash.com/photos/MvA86_qwpEI',
     tags: ['plants', 'outdoors'],
-    uploader: 0,
   },
   {
     name: 'Sweater and a Bit of Grass',
@@ -96,7 +88,6 @@ module.exports = [
     height: 2723,
     description: 'PC: https://unsplash.com/photos/UT1OrSlHZnE',
     tags: ['plants'],
-    uploader: 0,
   },
   {
     name: 'Smol Little Succulents',
@@ -107,7 +98,6 @@ module.exports = [
     height: 3000,
     description: 'PC: https://unsplash.com/photos/ncQ2sguVlgo',
     tags: ['plants'],
-    uploader: 0,
   },
   {
     name: 'Cute Dog Outside',
@@ -118,7 +108,6 @@ module.exports = [
     height: 5238,
     description: 'PC: https://unsplash.com/photos/fc7-lm0uOak',
     tags: ['dogs', 'outdoors'],
-    uploader: 1,
   },
   {
     name: 'Grand Canyon Pupper',
@@ -129,7 +118,6 @@ module.exports = [
     height: 5792,
     description: 'PC: https://unsplash.com/photos/jd0hS7Vhn_A',
     tags: ['dogs', 'outdoors'],
-    uploader: 1,
   },
   {
     name: 'Dog with Cute Red Hat',
@@ -140,7 +128,6 @@ module.exports = [
     height: 4526,
     description: 'PC: https://unsplash.com/photos/ghVDwGVWmgg',
     tags: ['dogs'],
-    uploader: 1,
   },
   {
     name: 'Awkard Family Photo Dog',
@@ -151,7 +138,6 @@ module.exports = [
     height: 5679,
     description: 'PC: https://unsplash.com/photos/2pbnDRhXc6Q',
     tags: ['dogs'],
-    uploader: 1,
   },
   {
     name: 'So Small on the Grass Meta Photo Shoot',
@@ -162,7 +148,6 @@ module.exports = [
     height: 4000,
     description: 'PC: https://unsplash.com/photos/oOE0VVLwWYo',
     tags: ['dogs', 'outdoors'],
-    uploader: 1,
   },
   {
     name: 'America Bandana Dog',
@@ -173,7 +158,6 @@ module.exports = [
     height: 2848,
     description: 'PC: https://unsplash.com/photos/SGBGU5ZhENo',
     tags: ['dogs'],
-    uploader: 1,
   },
   {
     name: 'Gorgeous Husky Hours',
@@ -184,7 +168,6 @@ module.exports = [
     height: 2848,
     description: 'PC: https://unsplash.com/photos/mNmOgYtwVpQ',
     tags: ['dogs'],
-    uploader: 1,
   },
   {
     name: 'Dog Sticking Head Out of Car Window',
@@ -195,7 +178,6 @@ module.exports = [
     height: 2722,
     description: 'PC: https://unsplash.com/photos/moqxfy5xARE',
     tags: ['dogs'],
-    uploader: 1,
   },
   {
     name: "Time for Walk Let's Goooooooo",
@@ -206,7 +188,6 @@ module.exports = [
     height: 4609,
     description: 'PC: https://unsplash.com/photos/cEwJ_ckjFDo',
     tags: ['dogs', 'outdoors'],
-    uploader: 1,
   },
   {
     name: 'Napkin Tucked so Dog Can Eat Neatly',
@@ -217,7 +198,6 @@ module.exports = [
     height: 5616,
     description: 'PC: https://unsplash.com/photos/E9pXiKUGjPU',
     tags: ['dogs'],
-    uploader: 1,
   },
   {
     name: 'Doge Side Eye',
@@ -228,7 +208,6 @@ module.exports = [
     height: 2832,
     description: 'PC: https://unsplash.com/photos/9JuzOoPcuHI',
     tags: ['dogs'],
-    uploader: 1,
   },
   {
     name: 'Dog Staring at Computer',
@@ -239,7 +218,6 @@ module.exports = [
     height: 3024,
     description: 'PC: https://unsplash.com/photos/1pyqUh8Jx3E',
     tags: ['dogs', 'computers'],
-    uploader: 2,
   },
   {
     name: 'Dog Keeping Your Seat Warm',
@@ -250,7 +228,6 @@ module.exports = [
     height: 4000,
     description: 'PC: https://unsplash.com/photos/lqm93sV0L_8',
     tags: ['dogs'],
-    uploader: 2,
   },
   {
     name: 'Dog Pot Holding a Cute Plant',
@@ -261,7 +238,6 @@ module.exports = [
     height: 5472,
     description: 'PC: https://unsplash.com/photos/eazBlWNjIGg',
     tags: ['dogs', 'plants'],
-    uploader: 2,
   },
   {
     name: 'Happy Dog on the Rocks',
@@ -272,7 +248,6 @@ module.exports = [
     height: 5184,
     description: 'PC: https://unsplash.com/photos/SuXtC_x0Foc',
     tags: ['dogs'],
-    uploader: 2,
   },
   {
     name: 'Yearning on the Sunflowers',
@@ -283,7 +258,6 @@ module.exports = [
     height: 3840,
     description: 'PC: https://unsplash.com/photos/Zfcb8ntesBo',
     tags: ['dogs', 'plants'],
-    uploader: 2,
   },
   {
     name: 'Grassy Dog Wildflowers',
@@ -294,7 +268,6 @@ module.exports = [
     height: 4000,
     description: 'PC: https://unsplash.com/photos/LATYeZyw88c',
     tags: ['dogs', 'plants', 'outdoors'],
-    uploader: 2,
   },
   {
     name: 'Dog vs Computer Battle for Attention',
@@ -305,7 +278,6 @@ module.exports = [
     height: 3072,
     description: 'PC: https://unsplash.com/photos/mnHo8JI0Paw',
     tags: ['dogs', 'plants', 'computers'],
-    uploader: 2,
   },
   {
     name: 'Dog Tongue',
@@ -316,7 +288,6 @@ module.exports = [
     height: 3456,
     description: 'PC: https://unsplash.com/photos/nA_9WzHtHIE',
     tags: ['dogs', 'outdoors'],
-    uploader: 2,
   },
   {
     name: 'Old Mac',
@@ -327,7 +298,6 @@ module.exports = [
     height: 4000,
     description: 'PC: https://unsplash.com/photos/KH0o-C1Z7lU',
     tags: ['computers'],
-    uploader: 2,
   },
   {
     name: 'Desk Vista',
@@ -338,7 +308,6 @@ module.exports = [
     height: 3778,
     description: 'PC: https://unsplash.com/photos/oaQ2mTeaP7o',
     tags: ['computers', 'outdoors'],
-    uploader: 2,
   },
   {
     name: 'Outdoor Study Time',
@@ -349,7 +318,6 @@ module.exports = [
     height: 4812,
     description: 'PC: https://unsplash.com/photos/IdhfwYkPGAs',
     tags: ['computers', 'outdoors'],
-    uploader: 2,
   },
   {
     name: 'Mechanical Keyboard',
@@ -360,7 +328,6 @@ module.exports = [
     height: 2726,
     description: 'PC: https://unsplash.com/photos/nCvi-gS5r88',
     tags: ['computers'],
-    uploader: 2,
   },
   {
     name: 'Laptop with Small Plant',
@@ -371,7 +338,6 @@ module.exports = [
     height: 3495,
     description: 'PC: https://unsplash.com/photos/1SAnrIxw5OY',
     tags: ['computers', 'plants'],
-    uploader: 2,
   },
   {
     name: 'Typewriter vs Computer',
@@ -382,7 +348,6 @@ module.exports = [
     height: 2749,
     description: 'PC: https://unsplash.com/photos/npxXWgQ33ZQ',
     tags: ['computers'],
-    uploader: 3,
   },
   {
     name: 'Computer and Succulent',
@@ -393,7 +358,6 @@ module.exports = [
     height: 4000,
     description: 'PC: https://unsplash.com/photos/jiVeo0i1EB4',
     tags: ['computers', 'plants'],
-    uploader: 3,
   },
   {
     name: 'Keyboard Closeup',
@@ -404,7 +368,6 @@ module.exports = [
     height: 4000,
     description: 'PC: https://unsplash.com/photos/WkfDrhxDMC8',
     tags: ['computers'],
-    uploader: 3,
   },
   {
     name: 'Type to the Left',
@@ -415,7 +378,6 @@ module.exports = [
     height: 1842,
     description: 'PC: https://unsplash.com/photos/RYyr-k3Ysqg',
     tags: ['computers'],
-    uploader: 3,
   },
   {
     name: 'Laptop Typer',
@@ -426,7 +388,6 @@ module.exports = [
     height: 2712,
     description: 'PC: https://unsplash.com/photos/1F4MukO0UNg',
     tags: ['computers'],
-    uploader: 3,
   },
   {
     name: 'Magestic Tropical Cat',
@@ -437,7 +398,6 @@ module.exports = [
     height: 7012,
     description: 'PC: https://unsplash.com/photos/X7UR0BDz-UY',
     tags: ['cats', 'plants'],
-    uploader: 3,
   },
   {
     name: 'White Longhair Cat on the Bed',
@@ -448,7 +408,6 @@ module.exports = [
     height: 4000,
     description: 'PC: https://unsplash.com/photos/UTVfyq6ZlBU',
     tags: ['cats'],
-    uploader: 3,
   },
   {
     name: 'Basket of Kittens',
@@ -459,7 +418,6 @@ module.exports = [
     height: 3456,
     description: 'PC: https://unsplash.com/photos/2JcixB1Ky3I',
     tags: ['cats'],
-    uploader: 3,
   },
   {
     name: 'Rare Feral Hunter at Golden Hour',
@@ -470,7 +428,6 @@ module.exports = [
     height: 3798,
     description: 'PC: https://unsplash.com/photos/YYjjtbQrsqw',
     tags: ['cats', 'outdoors', 'plants'],
-    uploader: 3,
   },
   {
     name: 'Proud Lord of Venice',
@@ -481,7 +438,6 @@ module.exports = [
     height: 4771,
     description: 'PC: https://unsplash.com/photos/R1oSj2m-7Ks',
     tags: ['cats'],
-    uploader: 3,
   },
   {
     name: 'Calico Twins',
@@ -492,7 +448,6 @@ module.exports = [
     height: 4016,
     description: 'PC: https://unsplash.com/photos/0ptOFauN7n8',
     tags: ['cats'],
-    uploader: 4,
   },
   {
     name: 'Cat and Butterfly',
@@ -503,7 +458,6 @@ module.exports = [
     height: 5184,
     description: 'PC: https://unsplash.com/photos/rW-I87aPY5Y',
     tags: ['cats'],
-    uploader: 4,
   },
   {
     name: 'Cat Nap',
@@ -514,7 +468,6 @@ module.exports = [
     height: 4032,
     description: 'PC: https://unsplash.com/photos/pdALzg0yN-8',
     tags: ['cats'],
-    uploader: 4,
   },
   {
     name: 'Black Cat on the Streets',
@@ -525,7 +478,6 @@ module.exports = [
     height: 5184,
     description: 'PC: https://unsplash.com/photos/UMyfDjQ6Ep8',
     tags: ['cats'],
-    uploader: 4,
   },
   {
     name: 'Cat Looking at Cat Pics',
@@ -536,7 +488,6 @@ module.exports = [
     height: 3936,
     description: 'PC: https://unsplash.com/photos/n2M2SBQE6Iw',
     tags: ['cats', 'computers'],
-    uploader: 4,
   },
   {
     name: 'Cat Eyes',
@@ -547,7 +498,6 @@ module.exports = [
     height: 4000,
     description: 'PC: https://unsplash.com/photos/Paw3cZH_YCY',
     tags: ['cats'],
-    uploader: 4,
   },
   {
     name: 'Cat by Corn Plant',
@@ -558,7 +508,6 @@ module.exports = [
     height: 5999,
     description: 'PC: https://unsplash.com/photos/M-zk3ul5M1A',
     tags: ['cats', 'plants'],
-    uploader: 4,
   },
   {
     name: 'Cat Reach',
@@ -569,7 +518,6 @@ module.exports = [
     height: 7952,
     description: 'PC: https://unsplash.com/photos/ZCHj_2lJP00',
     tags: ['cats'],
-    uploader: 4,
   },
   {
     name: 'Very Blue Eyes',
@@ -580,7 +528,6 @@ module.exports = [
     height: 2160,
     description: 'PC: https://unsplash.com/photos/MiaEop5bnqQ',
     tags: ['cats'],
-    uploader: 4,
   },
   {
     name: 'Pls Be Nice to Me',
@@ -591,7 +538,6 @@ module.exports = [
     height: 4585,
     description: 'PC: https://unsplash.com/photos/Wzj7rBxxMaw',
     tags: ['cats', 'plants'],
-    uploader: 4,
   },
   {
     name: 'Dog on the Bed (Adorable)',
@@ -602,6 +548,5 @@ module.exports = [
     height: 5472,
     description: 'PC: https://unsplash.com/photos/gRHEt2kF3NU',
     tags: ['dogs'],
-    uploader: 4,
   },
 ];

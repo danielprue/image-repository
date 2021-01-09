@@ -33,6 +33,16 @@ router.get('/:photoid', (req, res, next) => {
     .catch((err) => next(err));
 });
 
+// router.get('/:photoid/download', (req, res, next) => {
+//   const { photoid } = req.params;
+//   Photos.getPhotoById(photoid)
+//     .then((photo) => {
+//       console.log(photo['image_path']);
+//       res.download(photo['image_path']);
+//     })
+//     .catch((err) => next(err));
+// });
+
 router.get('/tags/:tag', (req, res, next) => {
   const { tag } = req.params;
   Photos.getPhotosByTag(tag)

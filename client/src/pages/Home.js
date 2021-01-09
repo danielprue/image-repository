@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import JustifiedGrid from 'react-justified-grid';
 import { useHistory } from 'react-router-dom';
 
-import { Image, Transformation } from 'cloudinary-react';
+import { Image } from 'cloudinary-react';
 
 import '../styling/Home.css';
+import Transformation from 'cloudinary-react/lib/components/Transformation';
+import { PageHeader } from 'antd';
 
 const Home = (props) => {
   const history = useHistory();
@@ -47,6 +49,11 @@ const Home = (props) => {
 
   return (
     <>
+      <div className='home-page-header'>
+        <PageHeader backIcon={false} title='Image Repository'>
+          {/* Add search and upload stuff here */}
+        </PageHeader>
+      </div>
       <JustifiedGrid
         className='grid-container'
         images={images}
@@ -72,7 +79,9 @@ const Home = (props) => {
                     height={height}
                     onClick={handlePicClick}
                     loading='lazy'
-                  ></Image>
+                  >
+                    <Transformation crop='scale' width='512' />
+                  </Image>
                 </div>
               );
             })}

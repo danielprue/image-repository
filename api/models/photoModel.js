@@ -14,6 +14,7 @@ module.exports = {
   getPhotoById,
   getPhotoByPublicId,
   getPhotosByIds,
+  getUploadedPhotosByUserId,
   getPhotosByTag,
   getPhotosBySearch,
 };
@@ -55,6 +56,11 @@ function getPhotoByPublicId(public_id) {
 // getPhotosByIds -- query table for multiple ids
 function getPhotosByIds(ids) {
   return photodb('photos').whereIn('id', ids);
+}
+
+// getUploadedPhotosByUserId -- query table for rows where given id matches uploader field
+function getUploadedPhotosByUserId(uploader) {
+  return photodb('photos').where({ uploader });
 }
 
 // getPhotosByTag -- query table for photos that contain a given tag

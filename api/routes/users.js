@@ -7,13 +7,18 @@ const Photos = require('../models/photoModel');
 // returns list of photo ids from specified user
 router.get('/:userid/photos', (req, res, next) => {
   const { userid } = req.params;
-
-  User.getUploadedPhotosByUserId(userid)
-    .then((photo_ids) => {
-      Photos.getPhotosByIds(photo_ids['uploaded_photos'])
-        .then((photos) => res.status(200).json(photos))
-        .catch((err) => next(err));
+  Photos.getUploadedPhotosByUserId(userid)
+    .then((photos) => {
+      res.status(200).json(photos);
     })
+    .catch((err) => next(err));
+});
+
+// returns data about a single user
+router.get('/:userid', (req, res, next) => {
+  const { userid } = req.params;
+  User.findUserById(userid)
+    .then((user) => res.status(200).json(user))
     .catch((err) => next(err));
 });
 
@@ -21,7 +26,7 @@ router.get('/:userid/photos', (req, res, next) => {
 router.delete('/:userid', (req, res, next) => {
   const { userid } = req.params;
 
-  User.getUploadedPhotosByUserId(userid).then((photos) => {
+  Photos.getUploadedPhotosByUserId(userid).then((photos) => {
     Photos.deletePhotos(photos['uploaded_photos']).then(() => {
       User.deleteUser(userid)
         .then(() =>
