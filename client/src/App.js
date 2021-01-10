@@ -1,12 +1,10 @@
-// import { useEffect, useState } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, useHistory } from 'react-router-dom';
 
 import { Form, Button, Input, Layout, Menu, Modal } from 'antd';
 import { HomeOutlined, GithubOutlined } from '@ant-design/icons';
 
 import Home from './pages/Home';
-import Login from './pages/Login';
 import ImageDetails from './pages/ImageDetails';
 
 import './styling/App.css';
@@ -15,31 +13,101 @@ import 'antd/dist/antd.css';
 const { Header, Content, Footer } = Layout;
 
 function App() {
+  // state
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false);
   const [isRegistrationModalVisible, setIsRegistrationModalVisible] = useState(
     false
   );
+  const [loginStatus, setLoginStatus] = useState(false);
+  const [form] = Form.useForm();
+
   const history = useHistory();
+
+  // useEffect
+  useEffect(() => {
+    let token = localStorage.getItem('token');
+    if (token) {
+      fetch(`http://localhost:3001/api/auth/verify/${token}`)
+        .then((res) => res.json())
+        .then((status) => {
+          if (status.expired) {
+            localStorage.removeItem('token');
+          } else {
+            setLoginStatus(true);
+          }
+        });
+    }
+  }, []);
+
+  // Button handlers
   const handleHomeClick = () => {
     history.push('/');
   };
 
-  // const layout = { labelCol: { span: 8 }, wrapperCol: { span: 16 } };
-
-  // const login = (
-  //   <Form {...layout} name='login' initialValues={{ remember: true }}>
-  //     <Form.Item
-  //       label='Username'
-  //       name='username'
-  //       rules={[{ required: true, message: 'Please input your username' }]}
-  //     >
-  //       <Input />
-  //     </Form.Item>
-  //   </Form>
-  // );
-
   const handleClickLoginModal = () => {
     setIsLoginModalVisible(true);
+  };
+
+  const handleLogout = () => {
+    setLoginStatus(false);
+    localStorage.removeItem('token');
+  };
+
+  const handleLoginSubmit = (values) => {
+    fetch(`http://localhost:3001/api/auth/login`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.token) {
+          localStorage.setItem('token', result.token);
+          setLoginStatus(true);
+          handleOnCancel();
+        } else {
+          form.setFields([
+            {
+              name: 'username',
+              value: '',
+              errors: ['Username and Password do not match'],
+            },
+            {
+              name: 'password',
+              value: '',
+              errors: ['Username and Password do not match'],
+            },
+          ]);
+          // setInvalidCredentials(true);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleRegisterSubmit = (values) => {
+    fetch(`http://localhost:3001/api/auth/register`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: values.username,
+        password: values.password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem('token', res.token);
+          setLoginStatus(true);
+        }
+        handleOnCancel();
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleClickRegisterModal = () => {
@@ -47,13 +115,16 @@ function App() {
   };
 
   const handleOnCancel = () => {
+    form.resetFields();
     setIsLoginModalVisible(false);
     setIsRegistrationModalVisible(false);
+    // setInvalidCredentials(false);
 
     const selected = document.querySelector('.ant-menu-item-selected');
     if (selected) selected.classList.remove('ant-menu-item-selected');
   };
 
+  // render component
   return (
     <div className='App'>
       <Layout className='layout'>
@@ -62,82 +133,164 @@ function App() {
             <HomeOutlined className='home-icon' onClick={handleHomeClick} />
             <div className='login-buttons'>
               <Menu theme='dark' mode='horizontal'>
-                <Menu.Item key='login-menu' onClick={handleClickLoginModal}>
-                  Login
-                </Menu.Item>
-                <Modal
-                  title='Login'
-                  visible={isLoginModalVisible}
-                  footer={null}
-                  onCancel={handleOnCancel}
-                >
-                  <Form
-                    name='login'
-                    initialValues={{ remember: true }}
-                    layout='vertical'
-                  >
-                    <Form.Item label='Username' name='username' rules={[]}>
-                      <Input />
-                    </Form.Item>
-                    <Form.Item label='Password' name='password' rules={[]}>
-                      <Input.Password />
-                    </Form.Item>
-                    <Button type='primary' htmlType='submit'>
-                      Submit
-                    </Button>
-                  </Form>
-                </Modal>
-                <Menu.Item
-                  key='register-menu'
-                  onClick={handleClickRegisterModal}
-                >
-                  Register
-                </Menu.Item>
-                <Modal
-                  title='Register'
-                  visible={isRegistrationModalVisible}
-                  footer={null}
-                  onCancel={handleOnCancel}
-                >
-                  <Form
-                    name='register'
-                    initialValues={{ remember: true }}
-                    layout='vertical'
-                  >
-                    <Form.Item label='Username' name='username' rules={[]}>
-                      <Input />
-                    </Form.Item>
-                    <Form.Item label='Password' name='password' rules={[]}>
-                      <Input.Password />
-                    </Form.Item>
-                    <Form.Item
-                      label='Confirm Password'
-                      name='confirm-password'
-                      rules={[]}
+                {!loginStatus ? (
+                  <>
+                    <Menu.Item key='login-menu' onClick={handleClickLoginModal}>
+                      Login
+                    </Menu.Item>
+                    <Modal
+                      title='Login'
+                      visible={isLoginModalVisible}
+                      footer={null}
+                      onCancel={handleOnCancel}
                     >
-                      <Input.Password />
-                    </Form.Item>
-                    <Button type='primary' htmlType='submit'>
-                      Submit
-                    </Button>
-                  </Form>
-                </Modal>
-                <Menu.Item key='guest-account'>Guest Account</Menu.Item>
+                      <Form
+                        name='login'
+                        form={form}
+                        initialValues={{}}
+                        layout='vertical'
+                        onFinish={handleLoginSubmit}
+                      >
+                        <Form.Item
+                          label='Username'
+                          name='username'
+                          validateTrigger='onBlur'
+                          rules={[
+                            { required: true, message: 'Username is Required' },
+                            // () => ({
+                            //   validator(_, value) {
+                            //     if (invalidCredentials)
+                            //       return Promise.reject(
+                            //         "Username and Password don't match"
+                            //       );
+                            //     return Promise.resolve();
+                            //   },
+                            // }),
+                          ]}
+                        >
+                          <Input />
+                        </Form.Item>
+                        <Form.Item
+                          label='Password'
+                          name='password'
+                          validateTrigger='onBlur'
+                          rules={[
+                            { required: true, message: 'Password is Required' },
+                          ]}
+                        >
+                          <Input.Password />
+                        </Form.Item>
+                        <Button type='primary' htmlType='submit'>
+                          Submit
+                        </Button>
+                      </Form>
+                    </Modal>
+                    <Menu.Item
+                      key='register-menu'
+                      onClick={handleClickRegisterModal}
+                    >
+                      Register
+                    </Menu.Item>
+                    <Modal
+                      title='Register'
+                      visible={isRegistrationModalVisible}
+                      footer={null}
+                      onCancel={handleOnCancel}
+                    >
+                      <Form
+                        name='register'
+                        form={form}
+                        initialValues={{}}
+                        layout='vertical'
+                        onFinish={handleRegisterSubmit}
+                      >
+                        <Form.Item
+                          label='Username'
+                          name='username'
+                          validateTrigger='onBlur'
+                          rules={[
+                            { required: true, message: 'Username is Required' },
+                            () => ({
+                              async validator(_, value) {
+                                let userquery;
+                                await fetch(
+                                  `http://localhost:3001/api/users/name/${value}`
+                                )
+                                  .then((res) => res.json())
+                                  .then((data) => {
+                                    userquery = data;
+                                  })
+                                  .catch((err) => console.log(err));
+                                if (!value || userquery.length === 0)
+                                  return Promise.resolve();
+                                else
+                                  return Promise.reject(
+                                    'Username not available'
+                                  );
+                              },
+                            }),
+                          ]}
+                        >
+                          <Input />
+                        </Form.Item>
+                        <Form.Item
+                          label='Password'
+                          name='password'
+                          validateTrigger='onBlur'
+                          rules={[
+                            { required: true, message: 'Password is Required' },
+                          ]}
+                        >
+                          <Input.Password />
+                        </Form.Item>
+                        <Form.Item
+                          label='Confirm Password'
+                          name='confirm-password'
+                          validateTrigger='onBlur'
+                          rules={[
+                            { required: true, message: 'Password is Required' },
+                            ({ getFieldValue }) => ({
+                              validator(_, value) {
+                                if (
+                                  !value ||
+                                  getFieldValue('password') === value
+                                ) {
+                                  return Promise.resolve();
+                                }
+                                return Promise.reject(
+                                  'Your passwords do not match'
+                                );
+                              },
+                            }),
+                          ]}
+                        >
+                          <Input.Password />
+                        </Form.Item>
+                        <Button type='primary' htmlType='submit'>
+                          Submit
+                        </Button>
+                      </Form>
+                    </Modal>
+                    <Menu.Item key='guest-account'>Guest Account</Menu.Item>
+                  </>
+                ) : (
+                  <>
+                    <Menu.Item key='logout' onClick={handleLogout}>
+                      Logout
+                    </Menu.Item>
+                  </>
+                )}
               </Menu>
             </div>
           </div>
         </Header>
         <Content>
           <Route exact path='/'>
-            <Home />
+            <Home loginStatus={loginStatus} />
           </Route>
 
           <Route path='/image/:id'>
             <ImageDetails />
-          </Route>
-
-          <Route path='/login'>
-            <Login />
           </Route>
         </Content>
         <Footer className='footer'>

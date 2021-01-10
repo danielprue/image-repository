@@ -22,6 +22,14 @@ router.get('/:userid', (req, res, next) => {
     .catch((err) => next(err));
 });
 
+//returns row matching username
+router.get('/name/:username', (req, res, next) => {
+  const { username } = req.params;
+  User.findUserByUsername(username)
+    .then((user) => res.status(200).json(user))
+    .catch((err) => next(err));
+});
+
 // deletes a user and all photos uploaded by them
 router.delete('/:userid', (req, res, next) => {
   const { userid } = req.params;

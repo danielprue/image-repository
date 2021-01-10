@@ -6,7 +6,8 @@ import { Image } from 'cloudinary-react';
 
 import '../styling/Home.css';
 import Transformation from 'cloudinary-react/lib/components/Transformation';
-import { PageHeader } from 'antd';
+import { PageHeader, Button, Tooltip } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 
 const Home = (props) => {
   const history = useHistory();
@@ -50,7 +51,20 @@ const Home = (props) => {
   return (
     <>
       <div className='home-page-header'>
-        <PageHeader backIcon={false} title='Image Repository'>
+        <PageHeader
+          backIcon={false}
+          title='Image Repository'
+          extra={[
+            <Tooltip
+              title='Login to use this feature'
+              trigger={props.loginStatus ? [] : 'hover'}
+            >
+              <Button disabled={!props.loginStatus} icon={<UploadOutlined />}>
+                Upload Image
+              </Button>
+            </Tooltip>,
+          ]}
+        >
           {/* Add search and upload stuff here */}
         </PageHeader>
       </div>
