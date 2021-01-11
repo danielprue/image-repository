@@ -9,9 +9,17 @@ import Transformation from 'cloudinary-react/lib/components/Transformation';
 import { PageHeader, Button, Tooltip } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
+import UploadModal from '../components/UploadModal';
+
 const Home = (props) => {
   const history = useHistory();
   const [images, setImages] = useState([]);
+
+  // props for upload modal
+  const [isUploadModalVisible, setIsUploadModalVisible] = useState(false);
+  const handleUploadOnCancel = () => {
+    setIsUploadModalVisible(false);
+  };
 
   const fetchImages = (imageList = null) => {
     let fetch_url = '';
@@ -58,14 +66,23 @@ const Home = (props) => {
             <Tooltip
               title='Login to use this feature'
               trigger={props.loginStatus ? [] : 'hover'}
+              key='tooltip'
             >
-              <Button disabled={!props.loginStatus} icon={<UploadOutlined />}>
+              <Button
+                disabled={!props.loginStatus}
+                icon={<UploadOutlined />}
+                onClick={() => setIsUploadModalVisible(true)}
+              >
                 Upload Image
               </Button>
             </Tooltip>,
           ]}
         >
           {/* Add search and upload stuff here */}
+          <UploadModal
+            isUploadModalVisible={isUploadModalVisible}
+            handleUploadOnCancel={handleUploadOnCancel}
+          />
         </PageHeader>
       </div>
       <JustifiedGrid

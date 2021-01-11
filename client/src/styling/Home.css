@@ -20,3 +20,20 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
+.ant-upload-picture-card-wrapper {
+  margin: 20px 10px;
+}
+
+.image-details-form {
+  display: inline-block;
+  margin: 20px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: inline;
+}

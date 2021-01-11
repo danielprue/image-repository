@@ -157,15 +157,6 @@ function App() {
                           validateTrigger='onBlur'
                           rules={[
                             { required: true, message: 'Username is Required' },
-                            // () => ({
-                            //   validator(_, value) {
-                            //     if (invalidCredentials)
-                            //       return Promise.reject(
-                            //         "Username and Password don't match"
-                            //       );
-                            //     return Promise.resolve();
-                            //   },
-                            // }),
                           ]}
                         >
                           <Input />
