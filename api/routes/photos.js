@@ -33,16 +33,6 @@ router.get('/:photoid', (req, res, next) => {
     .catch((err) => next(err));
 });
 
-// router.get('/:photoid/download', (req, res, next) => {
-//   const { photoid } = req.params;
-//   Photos.getPhotoById(photoid)
-//     .then((photo) => {
-//       console.log(photo['image_path']);
-//       res.download(photo['image_path']);
-//     })
-//     .catch((err) => next(err));
-// });
-
 router.get('/tags/:tag', (req, res, next) => {
   const { tag } = req.params;
   Photos.getPhotosByTag(tag)
@@ -55,9 +45,11 @@ router.get('/tags/:tag', (req, res, next) => {
 
 router.post('/upload', (req, res, next) => {
   const photo = req.body;
+  console.log(req.body);
+  console.log(req.headers);
   Photos.addPhoto(photo)
     .then((photo) => res.status(200).json(photo))
-    .catch((err) => next(err));
+    .catch((err) => console.log(err));
 });
 
 module.exports = router;

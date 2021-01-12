@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Input, Modal, Pagination, Steps, Upload } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
@@ -17,30 +17,85 @@ const UploadModal = (props) => {
   const [imageDescriptions, setImageDescriptions] = useState({});
   const [imageTags, setImageTags] = useState({});
 
-  // const getBase64 = (file) => {
-  //   return new Promise((resolve, reject) => {
-  //     const reader = new FileReader();
-  //     reader.onload = () => resolve(reader.result);
-  //     reader.onerror = (error) => reject(error);
-  //   });
-  // };
+  // Image data for postgres db
+  const [imageData, setImageData] = useState([]);
+
+  useEffect(() => {
+    console.log(fileList, imageNames, imageDescriptions, imageTags, imageData);
+    if (imageData.length === fileList.length && imageData.length > 0) {
+      for (const image of imageData) {
+        console.log(image);
+        fetch('http://localhost:3001/api/photos/upload', {
+          method: 'POST',
+          body: JSON.stringify(image),
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        });
+      }
+    }
+  }, [imageData]);
 
   const handleUploadChange = ({ fileList }) => setFileList(fileList);
 
   const handleUploadNext = () => {
+    console.log(fileList);
+    if (uploadProgress === 1) {
+      fetch('http://localhost:3001/api/auth/signature', { method: 'POST' })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          const { signature, timestamp } = data;
+          const form = new FormData();
+          for (let i = 0; i < fileList.length; i++) {
+            let file = fileList[i];
+            form.append('file', file.originFileObj);
+            form.append('api_key', '475231777989258');
+            form.append('timestamp', timestamp);
+            form.append('signature', signature);
+
+            fetch('https://api.cloudinary.com/v1_1/devm7fql3/image/upload', {
+              method: 'POST',
+              body: form,
+            })
+              .then((response) => {
+                return response.json();
+              })
+              .then((data) => {
+                const thisImage = {
+                  public_id: data.public_id,
+                  name: imageNames[i] || 'no name',
+                  image_path: data.secure_url,
+                  height: data.height,
+                  width: data.width,
+                  description: imageDescriptions[i] || 'no description',
+                  tags: imageTags[i] || [],
+                  uploader: localStorage.getItem('user'),
+                };
+                setImageData((imageData) => [...imageData, thisImage]);
+                console.log('updated image data', imageData);
+              });
+          }
+        });
+    }
     setUploadProgress(uploadProgress + 1);
-    console.log(imageNames);
   };
 
   const handleUploadPrevious = () => {
     setUploadProgress(uploadProgress - 1);
   };
 
-  const handleUploadOk = () => {};
+  const handleUploadOk = () => {
+    handleUploadCancel();
+  };
 
   const handleUploadCancel = () => {
     props.handleUploadOnCancel();
     setFileList([]);
+    setImageDescriptions({});
+    setImageNames({});
+    setImageTags({});
     setUploadProgress(0);
     setImageDetailsPage(0);
   };
@@ -86,13 +141,13 @@ const UploadModal = (props) => {
             Next
           </Button>,
           <Button
-            key='submit'
+            key='close'
             type='primary'
             onClick={handleUploadOk}
             className={uploadProgress === 2 ? null : 'hidden'}
             disabled={uploadProgress !== 2}
           >
-            Submit
+            Close
           </Button>,
         ]}
       >
@@ -123,7 +178,14 @@ const UploadModal = (props) => {
           <>
             {fileList.map((image, i) => {
               return (
-                <div key={i} className={imageDetailsPage === i ? '' : 'hidden'}>
+                <div
+                  key={i}
+                  className={
+                    imageDetailsPage === i
+                      ? 'image-details-container'
+                      : 'hidden'
+                  }
+                >
                   <img src={image.thumbUrl} alt={image.name} />
                   <div className='image-details-form'>
                     Name:
@@ -139,12 +201,14 @@ const UploadModal = (props) => {
                 </div>
               );
             })}
-            <Pagination
-              simple
-              onChange={handlePageChange}
-              total={fileList.length}
-              defaultPageSize={1}
-            />
+            <div className='pagination-container'>
+              <Pagination
+                simple
+                onChange={handlePageChange}
+                total={fileList.length}
+                defaultPageSize={1}
+              />
+            </div>
           </>
         ) : null}
 

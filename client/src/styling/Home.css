@@ -25,9 +25,24 @@
   margin: 20px 10px;
 }
 
+.pagination-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.image-details-container {
+  display: flex;
+  margin-top: 20px;
+}
+
 .image-details-form {
   display: inline-block;
+  line-height: 2;
   margin: 20px;
+}
+
+.tag-group-tag {
+  margin-top: 5px;
 }
 
 .hidden {

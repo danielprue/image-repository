@@ -3,7 +3,10 @@ const router = require('express').Router();
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv').config();
 const Users = require('../models/userModel');
+
+const cloudinary = require('cloudinary');
 
 //save this as a config later
 const jwtSecret = 'save this as a env var later';
@@ -46,6 +49,18 @@ router.get('/verify/:token', (req, res, next) => {
     const expired = Date.now() >= decoded.exp * 1000;
     res.status(200).json({ expired: expired });
   } else res.status(500);
+});
+
+router.post('/signature', async (req, res, next) => {
+  const timestamp = new Date().getTime();
+  const signature = await cloudinary.utils.api_sign_request(
+    {
+      timestamp,
+    },
+    process.env.CLOUDINARY_SECRET
+  );
+  if (timestamp && signature) res.status(200).json({ timestamp, signature });
+  else res.status(500);
 });
 
 function signToken(user) {

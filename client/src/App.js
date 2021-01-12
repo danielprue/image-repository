@@ -20,6 +20,7 @@ function App() {
   );
   const [loginStatus, setLoginStatus] = useState(false);
   const [form] = Form.useForm();
+  const [userId, setUserId] = useState(-1);
 
   const history = useHistory();
 
@@ -66,6 +67,7 @@ function App() {
       .then((result) => {
         if (result.token) {
           localStorage.setItem('token', result.token);
+          localStorage.setItem('user', result.id);
           setLoginStatus(true);
           handleOnCancel();
         } else {
@@ -277,7 +279,7 @@ function App() {
         </Header>
         <Content>
           <Route exact path='/'>
-            <Home loginStatus={loginStatus} />
+            <Home loginStatus={loginStatus} userId={userId} />
           </Route>
 
           <Route path='/image/:id'>
