@@ -1,13 +1,17 @@
 const userdb = require('../dbConfig');
+const knexfile = require('../knexfile');
 // id (PK)
 // username
 // password
-// uploaded_photos
+// favorites
 
 module.exports = {
   addUser,
   findUserById,
   findUserByUsername,
+  getUserFavorites,
+  addFavorite,
+  removeFavorite,
   deleteUser,
 };
 
@@ -28,6 +32,35 @@ function findUserById(id) {
 // findUserByUsername -- query user table and return row with matching username
 function findUserByUsername(username) {
   return userdb('users').where('username', username);
+}
+
+// getUserFavorites -- query user table by id and return list of favorites
+function getUserFavorites(id) {
+  return userdb('users').select('favorites').where({ id }).first();
+}
+
+// addFavorite -- adds id of image to a user's array of favorites
+function addFavorite(user_id, photo_id) {
+  return userdb('users')
+    .where('id', user_id)
+    .update({
+      favorites: userdb.raw('array_append(favorites, ?)', [photo_id]),
+    });
+}
+
+// removeFavorite -- removes id of image from a user's array of favorites
+function removeFavorite(user_id, photo_id) {
+  return userdb('users')
+    .where('id', user_id)
+    .update({
+      favorites: userdb.raw('array_remove(favorites, ?)', [photo_id]),
+    });
+  // const favs = userdb('users')
+  //   .select('favorites')
+  //   .where('id', user_id)
+  //   .filter((item) => item != photo_id);
+  // console.log(favs);
+  // return userdb('users').where('id', user_id).update('favorites', favs);
 }
 
 // deleteUser -- remove row from users table with matching id

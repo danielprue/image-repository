@@ -3,6 +3,7 @@ var router = express.Router();
 
 const User = require('../models/userModel');
 const Photos = require('../models/photoModel');
+const { userParams } = require('../dbConfig');
 
 // returns list of photo ids from specified user
 router.get('/:userid/photos', (req, res, next) => {
@@ -27,6 +28,38 @@ router.get('/name/:username', (req, res, next) => {
   const { username } = req.params;
   User.findUserByUsername(username)
     .then((user) => res.status(200).json(user))
+    .catch((err) => next(err));
+});
+
+//returns photos matching ids in user's favorites
+router.get('/:userid/favorites', (req, res, next) => {
+  const { userid } = req.params;
+  User.getUserFavorites(userid)
+    .then((favs) => {
+      console.log(favs.favorites);
+      Photos.getPhotosByIds(favs.favorites)
+        .then((photos) => res.status(200).json(photos))
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
+});
+
+// updates favorites with additional favorite
+router.put('/:userid/favorites/add/:photoid', (req, res, next) => {
+  const { userid, photoid } = req.params;
+  User.addFavorite(userid, photoid)
+    .then((data) => {
+      console.log(data);
+      res.status(200).json(data);
+    })
+    .catch((err) => console.log(err));
+});
+
+//updates favorites with removed favorite
+router.put('/:userid/favorites/remove/:photoid', (req, res, next) => {
+  const { userid, photoid } = req.params;
+  User.removeFavorite(userid, photoid)
+    .then((data) => res.status(200).json(data))
     .catch((err) => next(err));
 });
 
