@@ -82,7 +82,7 @@ const Home = (props) => {
           <UploadModal
             isUploadModalVisible={isUploadModalVisible}
             handleUploadOnCancel={handleUploadOnCancel}
-            userId={props.userId}
+            userId={localStorage.getItem('user')}
           />
         </PageHeader>
       </div>

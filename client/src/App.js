@@ -19,8 +19,8 @@ function App() {
     false
   );
   const [loginStatus, setLoginStatus] = useState(false);
+  const [userFavs, setUserFavs] = useState([]);
   const [form] = Form.useForm();
-  const [userId, setUserId] = useState(-1);
 
   const history = useHistory();
 
@@ -40,6 +40,19 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    if (loginStatus) {
+      let user = localStorage.getItem('user');
+      fetch(`http://localhost:3001/api/users/${user}/favorites`)
+        .then((res) => res.json())
+        .then((favs) => {
+          console.log(favs);
+          setUserFavs(favs.map((image) => image.id));
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [loginStatus]);
+
   // Button handlers
   const handleHomeClick = () => {
     history.push('/');
@@ -51,6 +64,7 @@ function App() {
 
   const handleLogout = () => {
     setLoginStatus(false);
+    setUserFavs([]);
     localStorage.removeItem('token');
   };
 
@@ -279,11 +293,15 @@ function App() {
         </Header>
         <Content>
           <Route exact path='/'>
-            <Home loginStatus={loginStatus} userId={userId} />
+            <Home loginStatus={loginStatus} />
           </Route>
 
           <Route path='/image/:id'>
-            <ImageDetails />
+            <ImageDetails
+              loginStatus={loginStatus}
+              userFavs={userFavs}
+              setUserFavs={setUserFavs}
+            />
           </Route>
         </Content>
         <Footer className='footer'>

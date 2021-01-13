@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 
-import { Descriptions, PageHeader, Tag } from 'antd';
+import { Descriptions, PageHeader, Tag, Button } from 'antd';
+import { HeartTwoTone } from '@ant-design/icons';
 import { Image } from 'cloudinary-react';
 
 import '../styling/ImageDetails.css';
 
-const ImageDetails = () => {
+const ImageDetails = (props) => {
   const [image, setImage] = useState(null);
   const [imageDimensions, setImageDimensions] = useState({});
   const [uploader, setUploader] = useState('unknown');
+  const [isFav, setIsFav] = useState(false);
   const match = useRouteMatch();
   const history = useHistory();
 
@@ -31,6 +33,37 @@ const ImageDetails = () => {
       .catch((err) => console.log(err));
   };
 
+  const handleFavClick = (e) => {
+    const user = localStorage.getItem('user');
+    if (isFav) {
+      fetch(
+        `http://localhost:3001/api/users/${user}/favorites/remove/${image.id}`,
+        {
+          method: 'PUT',
+        }
+      )
+        .then(() => {
+          setIsFav(false);
+          props.setUserFavs(
+            [...props.userFavs].filter((item) => item !== image.id)
+          );
+        })
+        .catch((err) => console.log(err));
+    } else {
+      fetch(
+        `http://localhost:3001/api/users/${user}/favorites/add/${image.id}`,
+        {
+          method: 'PUT',
+        }
+      )
+        .then(() => {
+          setIsFav(true);
+          props.setUserFavs([...props.userFavs, image.id]);
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   useEffect(() => {
     fetchImage(match.params.id);
   }, [match.params.id]);
@@ -46,6 +79,10 @@ const ImageDetails = () => {
     }
   }, [image]);
 
+  useEffect(() => {
+    if (image) setIsFav(props.userFavs.includes(image.id));
+  }, [image, props.userFavs]);
+
   return (
     <div className='image-details'>
       <div className='image-details-header'>
@@ -54,6 +91,11 @@ const ImageDetails = () => {
           onBack={() => history.goBack()}
           title={image ? image.name : 'Loading'}
           subTitle={image ? `by ${uploader}` : 'loading'}
+          extra={[
+            <Button onClick={handleFavClick}>
+              <HeartTwoTone twoToneColor={isFav ? '#eb2f96' : null} />
+            </Button>,
+          ]}
         >
           <Descriptions size='small' column={1}>
             <Descriptions.Item label='Description'>
