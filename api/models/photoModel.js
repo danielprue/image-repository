@@ -70,5 +70,9 @@ function getPhotosByTag(tag) {
 
 // getPhotosBySearch -- query table for photos with names like a search term
 function getPhotosBySearch(search_term) {
-  return photodb('photos').where('name', 'like', `%${search_term}%`);
+  return photodb.raw(`select distinct on (id) * 
+    from (
+      select *, unnest(tags) tag
+      from photos) x
+    where tag like '%${search_term}%' or name like '%${search_term}%'`);
 }

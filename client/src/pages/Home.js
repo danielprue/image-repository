@@ -6,13 +6,15 @@ import { Image } from 'cloudinary-react';
 
 import '../styling/Home.css';
 import Transformation from 'cloudinary-react/lib/components/Transformation';
-import { PageHeader, Button, Tooltip } from 'antd';
+import { PageHeader, Button, Tooltip, Select, Input } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 import UploadModal from '../components/UploadModal';
 
 const Home = (props) => {
   const history = useHistory();
+  const { Option } = Select;
+  const { Search } = Input;
   const [images, setImages] = useState([]);
 
   // props for upload modal
@@ -79,6 +81,17 @@ const Home = (props) => {
           ]}
         >
           {/* Add search and upload stuff here */}
+          <Search
+            placeholder='search images'
+            onSearch={() => {}}
+            addonBefore={
+              <Select defaultValue='all-images'>
+                <Option value='all-images'>All Images</Option>
+                <Option value='my-favs'>My Favorites</Option>
+                <Option value='my-uploads'>My Uploads</Option>
+              </Select>
+            }
+          />
           <UploadModal
             isUploadModalVisible={isUploadModalVisible}
             handleUploadOnCancel={handleUploadOnCancel}

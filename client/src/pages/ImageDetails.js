@@ -91,11 +91,15 @@ const ImageDetails = (props) => {
           onBack={() => history.goBack()}
           title={image ? image.name : 'Loading'}
           subTitle={image ? `by ${uploader}` : 'loading'}
-          extra={[
-            <Button onClick={handleFavClick}>
-              <HeartTwoTone twoToneColor={isFav ? '#eb2f96' : null} />
-            </Button>,
-          ]}
+          extra={
+            props.loginStatus
+              ? [
+                  <Button onClick={handleFavClick}>
+                    <HeartTwoTone twoToneColor={isFav ? '#eb2f96' : null} />
+                  </Button>,
+                ]
+              : null
+          }
         >
           <Descriptions size='small' column={1}>
             <Descriptions.Item label='Description'>

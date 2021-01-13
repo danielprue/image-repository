@@ -52,4 +52,16 @@ router.post('/upload', (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
+router.post('/search', (req, res, next) => {
+  const { search_term, search_type } = req.body;
+  if (search_type === 'all-images') {
+    console.log(search_term, search_type);
+    Photos.getPhotosBySearch(search_term)
+      .then((photos) => res.status(200).json(photos))
+      .catch((err) => console.log(err));
+  } else if (search_type === 'my-favs') {
+  } else if (search_type === 'my-uploads') {
+  }
+});
+
 module.exports = router;
