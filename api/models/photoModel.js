@@ -20,6 +20,7 @@ module.exports = {
   getFavPhotosBySearch,
   getUploadedPhotosBySearch,
   getPublicIdById,
+  updatePhoto,
 };
 
 // getAllPhotos -- returns all rows from photos
@@ -104,4 +105,9 @@ function getUploadedPhotosBySearch(search_term, user) {
 //getPublicIdById -- query table for row with id and return public_id
 function getPublicIdById(id) {
   return photodb('photos').select('public_id').where({ id }).first();
+}
+
+//updatePhoto -- query table for row ith matching id, then update given columns
+function updatePhoto(id, updates) {
+  return photodb('photos').where({ id }).update(updates);
 }

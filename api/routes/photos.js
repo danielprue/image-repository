@@ -95,4 +95,17 @@ router.delete('/:photoid', (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
+router.put('/:photoid', (req, res, next) => {
+  const { photoid } = req.params;
+  const { updates } = req.body;
+
+  console.log(updates);
+  Photos.updatePhoto(photoid, updates).then((numRows) => {
+    res
+      .status(200)
+      .json(numRows)
+      .catch((err) => console.log(err));
+  });
+});
+
 module.exports = router;

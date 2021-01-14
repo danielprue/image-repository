@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 
-import { Descriptions, PageHeader, Tag, Button } from 'antd';
+import { Descriptions, PageHeader, Tag, Button, Input } from 'antd';
 import { HeartTwoTone, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Image } from 'cloudinary-react';
 
 import '../styling/ImageDetails.css';
+import Modal from 'antd/lib/modal/Modal';
+import EditableTagGroup from '../components/EditableTagGroup';
 
 const ImageDetails = (props) => {
   const [image, setImage] = useState(null);
   const [imageDimensions, setImageDimensions] = useState({});
   const [uploader, setUploader] = useState('unknown');
   const [isFav, setIsFav] = useState(false);
+
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
+  const [editName, setEditName] = useState('');
+  const [editDescription, setEditDescription] = useState('');
+  const [editTags, setEditTags] = useState({ 0: [] });
+
   const match = useRouteMatch();
   const history = useHistory();
 
@@ -74,7 +82,43 @@ const ImageDetails = (props) => {
       .catch((err) => console.log(err));
   };
 
-  const handleEdit = () => {};
+  const handleEdit = () => {
+    setIsEditModalVisible(true);
+  };
+
+  const handleEditOk = () => {
+    const editBody = {};
+    if (image.name !== editName) editBody['name'] = editName;
+    if (image.description !== editDescription)
+      editBody['description'] = editDescription;
+    if (image.tags !== editTags[0]) editBody['tags'] = editTags[0];
+    console.log(editBody);
+
+    fetch(`http://localhost:3001/api/photos/${image.id}`, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ updates: editBody }),
+    });
+    window.location.reload();
+  };
+
+  const handleEditCancel = () => {
+    setEditTags({ 0: image.tags });
+    setEditName(image.name);
+    setEditDescription(image.description);
+    setIsEditModalVisible(false);
+  };
+
+  const handleEditNameChange = (e) => {
+    setEditName(e.target.value);
+  };
+
+  const handleEditDescriptionChange = (e) => {
+    setEditDescription(e.target.value);
+  };
 
   useEffect(() => {
     fetchImage(match.params.id);
@@ -88,6 +132,10 @@ const ImageDetails = (props) => {
       } else {
         setImageDimensions({ height: '100%' });
       }
+
+      setEditName(image.name);
+      setEditDescription(image.description);
+      setEditTags({ 0: image.tags });
     }
     console.log(image, localStorage.getItem('user'));
   }, [image]);
@@ -127,6 +175,26 @@ const ImageDetails = (props) => {
                 <Button onClick={handleDelete} type='primary' danger>
                   <DeleteOutlined />
                 </Button>
+                <Modal
+                  title={'Edit Image'}
+                  visible={isEditModalVisible}
+                  onOk={handleEditOk}
+                  onCancel={handleEditCancel}
+                >
+                  Name:{' '}
+                  <Input onChange={handleEditNameChange} value={editName} />
+                  Description:{' '}
+                  <Input
+                    onChange={handleEditDescriptionChange}
+                    value={editDescription}
+                  />
+                  Tags:{' '}
+                  <EditableTagGroup
+                    ImageTags={editTags}
+                    setImageTags={setEditTags}
+                    imageNumber={0}
+                  />
+                </Modal>
               </div>
             </div>,
           ]}
