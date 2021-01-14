@@ -3,6 +3,13 @@ const router = require('express').Router();
 const User = require('../models/userModel');
 const Photos = require('../models/photoModel');
 
+const cloudinary = require('cloudinary');
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET,
+});
+
 router.get('/all', (req, res, next) => {
   Photos.getAllPhotos()
     .then((photos) => res.status(200).json(photos))
@@ -71,6 +78,21 @@ router.post('/search', (req, res, next) => {
       .then((photos) => res.status(200).json(photos))
       .catch((err) => console.log(err));
   }
+});
+
+router.delete('/:photoid', (req, res, next) => {
+  const { photoid } = req.params;
+  Photos.getPublicIdById(photoid).then((pid) => {
+    console.log(pid);
+    cloudinary.v2.uploader
+      .destroy(pid.public_id, (error, result) => {
+        console.log(error, result);
+      })
+      .catch((err) => console.log(err));
+  });
+  Photos.deletePhoto(photoid)
+    .then((photo) => res.status(200).json(photo))
+    .catch((err) => console.log(err));
 });
 
 module.exports = router;

@@ -19,6 +19,7 @@ module.exports = {
   getPhotosBySearch,
   getFavPhotosBySearch,
   getUploadedPhotosBySearch,
+  getPublicIdById,
 };
 
 // getAllPhotos -- returns all rows from photos
@@ -98,4 +99,9 @@ function getUploadedPhotosBySearch(search_term, user) {
       from photos) x
     where (tag like '%${search_term}%' or name like '%${search_term}%') 
       and uploader = ${user}`);
+}
+
+//getPublicIdById -- query table for row with id and return public_id
+function getPublicIdById(id) {
+  return photodb('photos').select('public_id').where({ id }).first();
 }

@@ -16,3 +16,11 @@
 .image-info {
   text-align: left;
 }
+
+.button-container {
+  display: flex;
+}
+
+.button-container button {
+  margin-left: 10px;
+}

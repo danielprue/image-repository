@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import { Descriptions, PageHeader, Tag, Button } from 'antd';
-import { HeartTwoTone } from '@ant-design/icons';
+import { HeartTwoTone, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Image } from 'cloudinary-react';
 
 import '../styling/ImageDetails.css';
@@ -64,6 +64,18 @@ const ImageDetails = (props) => {
     }
   };
 
+  const handleDelete = () => {
+    fetch(`http://localhost:3001/api/photos/${image.id}`, {
+      method: 'DELETE',
+    })
+      .then(() => {
+        history.push('/');
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleEdit = () => {};
+
   useEffect(() => {
     fetchImage(match.params.id);
   }, [match.params.id]);
@@ -77,6 +89,7 @@ const ImageDetails = (props) => {
         setImageDimensions({ height: '100%' });
       }
     }
+    console.log(image, localStorage.getItem('user'));
   }, [image]);
 
   useEffect(() => {
@@ -91,15 +104,32 @@ const ImageDetails = (props) => {
           onBack={() => history.goBack()}
           title={image ? image.name : 'Loading'}
           subTitle={image ? `by ${uploader}` : 'loading'}
-          extra={
-            props.loginStatus
-              ? [
-                  <Button onClick={handleFavClick}>
-                    <HeartTwoTone twoToneColor={isFav ? '#eb2f96' : null} />
-                  </Button>,
-                ]
-              : null
-          }
+          extra={[
+            <div className='button-container'>
+              <Button
+                onClick={handleFavClick}
+                className={props.loginStatus ? '' : 'hidden'}
+              >
+                <HeartTwoTone twoToneColor={isFav ? '#eb2f96' : null} />
+              </Button>
+              <div
+                className={
+                  image &&
+                  props.loginStatus &&
+                  parseInt(localStorage.getItem('user')) === image.uploader
+                    ? null
+                    : 'hidden'
+                }
+              >
+                <Button onClick={handleEdit}>
+                  <EditOutlined />
+                </Button>
+                <Button onClick={handleDelete} type='primary' danger>
+                  <DeleteOutlined />
+                </Button>
+              </div>
+            </div>,
+          ]}
         >
           <Descriptions size='small' column={1}>
             <Descriptions.Item label='Description'>
