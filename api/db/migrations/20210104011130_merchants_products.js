@@ -4,6 +4,7 @@ exports.up = function (knex) {
       tbl.increments('id').unsigned().primary();
       tbl.string('username').notNullable();
       tbl.string('password').notNullable();
+      tbl.boolean('isGuest').notNullable().defaultTo(false);
       tbl.specificType('favorites', 'int[]').notNullable().defaultTo('{}');
     })
     .createTable('photos', (tbl) => {

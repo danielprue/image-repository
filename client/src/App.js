@@ -33,6 +33,8 @@ function App() {
         .then((status) => {
           if (status.expired) {
             localStorage.removeItem('token');
+            localStorage.removeItem('isGuest');
+            localStorage.removeItem('user');
           } else {
             setLoginStatus(true);
           }
@@ -63,9 +65,22 @@ function App() {
   };
 
   const handleLogout = () => {
+    if (localStorage.getItem('isGuest')) {
+      fetch(
+        `http://localhost:3001/api/auth/guest/${localStorage.getItem('user')}`,
+        {
+          method: 'DELETE',
+        }
+      );
+    }
+
     setLoginStatus(false);
     setUserFavs([]);
     localStorage.removeItem('token');
+    localStorage.removeItem('isGuest');
+    localStorage.removeItem('user');
+
+    window.location.reload();
   };
 
   const handleLoginSubmit = (values) => {
@@ -138,6 +153,21 @@ function App() {
 
     const selected = document.querySelector('.ant-menu-item-selected');
     if (selected) selected.classList.remove('ant-menu-item-selected');
+  };
+
+  const handleCreateGuest = () => {
+    fetch(`http://localhost:3001/api/auth/guest/create`)
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.token) {
+          localStorage.setItem('token', result.token);
+          localStorage.setItem('user', result.id);
+          localStorage.setItem('isGuest', true);
+
+          setLoginStatus(true);
+          window.location.reload();
+        }
+      });
   };
 
   // render component
@@ -278,7 +308,9 @@ function App() {
                         </Button>
                       </Form>
                     </Modal>
-                    <Menu.Item key='guest-account'>Guest Account</Menu.Item>
+                    <Menu.Item key='guest-account' onClick={handleCreateGuest}>
+                      Guest Account
+                    </Menu.Item>
                   </>
                 ) : (
                   <>

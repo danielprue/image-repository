@@ -3,7 +3,6 @@ var router = express.Router();
 
 const User = require('../models/userModel');
 const Photos = require('../models/photoModel');
-const { userParams } = require('../dbConfig');
 
 // returns list of photo ids from specified user
 router.get('/:userid/photos', (req, res, next) => {

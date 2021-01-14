@@ -1,7 +1,10 @@
 const photodb = require('../dbConfig');
 // id
+// public_id
 // name
 // image_path
+// height
+// width
 // description
 // tags
 // uploader

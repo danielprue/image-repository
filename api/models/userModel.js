@@ -3,12 +3,14 @@ const knexfile = require('../knexfile');
 // id (PK)
 // username
 // password
+// isGuest
 // favorites
 
 module.exports = {
   addUser,
   findUserById,
   findUserByUsername,
+  getIsGuest,
   getUserFavorites,
   addFavorite,
   removeFavorite,
@@ -32,6 +34,11 @@ function findUserById(id) {
 // findUserByUsername -- query user table and return row with matching username
 function findUserByUsername(username) {
   return userdb('users').where('username', username);
+}
+
+// getIsGuest -- query user table by id and return isGuest
+function getIsGuest(id) {
+  return userdb('users').select('isGuest').where({ id }).first();
 }
 
 // getUserFavorites -- query user table by id and return list of favorites

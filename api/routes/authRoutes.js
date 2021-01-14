@@ -4,9 +4,13 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config();
-const Users = require('../models/userModel');
-
 const cloudinary = require('cloudinary');
+
+const Users = require('../models/userModel');
+const Photos = require('../models/photoModel');
+const { guestNumber } = require('../utils/guestNumber');
+const { guestSeed } = require('../utils/guestSeed');
+const { deleteGuest } = require('../utils/deleteGuest');
 
 //save this as a config later
 const jwtSecret = 'save this as a env var later';
@@ -61,6 +65,39 @@ router.post('/signature', async (req, res, next) => {
   );
   if (timestamp && signature) res.status(200).json({ timestamp, signature });
   else res.status(500);
+});
+
+router.delete('/guest/:id', (req, res, next) => {
+  const { id } = req.params;
+  deleteGuest(id)
+    .then(() => {
+      res.status(200);
+    })
+    .catch((err) => console.log(err));
+});
+
+// adds guest user, then deletes it in an hour
+router.get('/guest/create', async (req, res, next) => {
+  const userInfo = await guestNumber();
+  console.log(userInfo);
+  const hash = bcrypt.hashSync(userInfo.password, 5);
+  userInfo.password = hash;
+
+  Users.addUser(userInfo)
+    .then((user) => {
+      const guestPhotos = guestSeed(user.id);
+      guestPhotos.forEach((photo) => {
+        Photos.addPhoto(photo);
+      });
+
+      setTimeout(() => {
+        deleteGuest(user.id);
+      }, 86400000);
+
+      const token = signToken(user);
+      res.status(201).json({ ...user, password: '**********', token });
+    })
+    .catch((err) => console.log(err));
 });
 
 function signToken(user) {

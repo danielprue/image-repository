@@ -87,7 +87,7 @@ const UploadModal = (props) => {
   };
 
   const handleUploadOk = () => {
-    handleUploadCancel();
+    window.location.reload();
   };
 
   const handleUploadCancel = () => {
