@@ -16,11 +16,52 @@ const Home = (props) => {
   const { Option } = Select;
   const { Search } = Input;
   const [images, setImages] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchType, setSearchType] = useState('all-images');
 
   // props for upload modal
   const [isUploadModalVisible, setIsUploadModalVisible] = useState(false);
   const handleUploadOnCancel = () => {
     setIsUploadModalVisible(false);
+  };
+
+  const handleSearchTermChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearchTypeChange = (value, event) => {
+    setSearchType(value);
+  };
+
+  const handleSearch = () => {
+    fetch(`http://localhost:3001/api/photos/search`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        search_term: searchTerm,
+        search_type: searchType,
+        user: localStorage.getItem('user'),
+      }),
+    })
+      .then((res) => res.json())
+      .then((searchResults) => {
+        console.log(searchResults);
+        setImages(
+          searchResults.rows.map((pic) => {
+            return {
+              src: pic.image_path,
+              height: pic.height,
+              width: pic.width,
+              public_id: pic.public_id,
+              uploader: pic.uploader,
+            };
+          })
+        );
+      })
+      .catch((err) => console.log(err));
   };
 
   const fetchImages = (imageList = null) => {
@@ -42,6 +83,7 @@ const Home = (props) => {
               height: pic.height,
               width: pic.width,
               public_id: pic.public_id,
+              uploader: pic.uploader,
             };
           })
         );
@@ -83,12 +125,20 @@ const Home = (props) => {
           {/* Add search and upload stuff here */}
           <Search
             placeholder='search images'
-            onSearch={() => {}}
+            onSearch={handleSearch}
+            onChange={handleSearchTermChange}
             addonBefore={
-              <Select defaultValue='all-images'>
+              <Select
+                defaultValue='all-images'
+                onChange={handleSearchTypeChange}
+              >
                 <Option value='all-images'>All Images</Option>
-                <Option value='my-favs'>My Favorites</Option>
-                <Option value='my-uploads'>My Uploads</Option>
+                {props.loginStatus && (
+                  <>
+                    <Option value='my-favs'>My Favorites</Option>
+                    <Option value='my-uploads'>My Uploads</Option>
+                  </>
+                )}
               </Select>
             }
           />

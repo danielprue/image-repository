@@ -17,6 +17,8 @@ module.exports = {
   getUploadedPhotosByUserId,
   getPhotosByTag,
   getPhotosBySearch,
+  getFavPhotosBySearch,
+  getUploadedPhotosBySearch,
 };
 
 // getAllPhotos -- returns all rows from photos
@@ -75,4 +77,25 @@ function getPhotosBySearch(search_term) {
       select *, unnest(tags) tag
       from photos) x
     where tag like '%${search_term}%' or name like '%${search_term}%'`);
+}
+
+// getFavPhotosBySearch -- query table for photos with names like a search term and in favorites
+function getFavPhotosBySearch(search_term, favs) {
+  const str_favs = `(${favs.map((ele) => `'${ele}'`).join(',')})`;
+  return photodb.raw(`select distinct on (id) *
+    from (
+      select *, unnest(tags) tag
+      from photos) x
+    where (tag like '%${search_term}%' or name like '%${search_term}%') 
+      and id in ${str_favs}`);
+}
+
+// getUploadedPhotosBySearch -- query table for photos with names like a search term and in uploads
+function getUploadedPhotosBySearch(search_term, user) {
+  return photodb.raw(`select distinct on (id) *
+    from (
+      select *, unnest(tags) tag
+      from photos) x
+    where (tag like '%${search_term}%' or name like '%${search_term}%') 
+      and uploader = ${user}`);
 }

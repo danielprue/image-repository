@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-// const { intersect } = require('../dbConfig');
+const User = require('../models/userModel');
 const Photos = require('../models/photoModel');
 
 router.get('/all', (req, res, next) => {
@@ -53,14 +53,23 @@ router.post('/upload', (req, res, next) => {
 });
 
 router.post('/search', (req, res, next) => {
-  const { search_term, search_type } = req.body;
+  const { search_term, search_type, user } = req.body;
   if (search_type === 'all-images') {
     console.log(search_term, search_type);
     Photos.getPhotosBySearch(search_term)
       .then((photos) => res.status(200).json(photos))
       .catch((err) => console.log(err));
   } else if (search_type === 'my-favs') {
+    User.getUserFavorites(user).then((favs) => {
+      console.log(favs);
+      Photos.getFavPhotosBySearch(search_term, favs.favorites)
+        .then((photos) => res.status(200).json(photos))
+        .catch((err) => console.log(err));
+    });
   } else if (search_type === 'my-uploads') {
+    Photos.getUploadedPhotosBySearch(search_term, user)
+      .then((photos) => res.status(200).json(photos))
+      .catch((err) => console.log(err));
   }
 });
 
