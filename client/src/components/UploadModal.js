@@ -25,7 +25,7 @@ const UploadModal = (props) => {
     if (imageData.length === fileList.length && imageData.length > 0) {
       for (const image of imageData) {
         console.log(image);
-        fetch('http://localhost:3001/api/photos/upload', {
+        fetch(`${process.env.REACT_APP_API}/api/photos/upload`, {
           method: 'POST',
           body: JSON.stringify(image),
           headers: {
@@ -42,7 +42,9 @@ const UploadModal = (props) => {
   const handleUploadNext = () => {
     console.log(fileList);
     if (uploadProgress === 1) {
-      fetch('http://localhost:3001/api/auth/signature', { method: 'POST' })
+      fetch(`${process.env.REACT_APP_API}/api/auth/signature`, {
+        method: 'POST',
+      })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -51,14 +53,17 @@ const UploadModal = (props) => {
           for (let i = 0; i < fileList.length; i++) {
             let file = fileList[i];
             form.append('file', file.originFileObj);
-            form.append('api_key', '475231777989258');
+            form.append('api_key', process.env.REACT_APP_CLOUDINARY_API_KEY);
             form.append('timestamp', timestamp);
             form.append('signature', signature);
 
-            fetch('https://api.cloudinary.com/v1_1/devm7fql3/image/upload', {
-              method: 'POST',
-              body: form,
-            })
+            fetch(
+              `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
+              {
+                method: 'POST',
+                body: form,
+              }
+            )
               .then((response) => {
                 return response.json();
               })

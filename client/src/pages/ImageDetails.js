@@ -24,7 +24,7 @@ const ImageDetails = (props) => {
   const history = useHistory();
 
   const fetchImage = (id) => {
-    fetch(`http://localhost:3001/api/photos/${id}`)
+    fetch(`${process.env.REACT_APP_API}/api/photos/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setImage(data);
@@ -33,7 +33,7 @@ const ImageDetails = (props) => {
   };
 
   const fetchUsername = (id) => {
-    fetch(`http://localhost:3001/api/users/${id}`)
+    fetch(`${process.env.REACT_APP_API}/api/users/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setUploader(data.username);
@@ -45,7 +45,7 @@ const ImageDetails = (props) => {
     const user = localStorage.getItem('user');
     if (isFav) {
       fetch(
-        `http://localhost:3001/api/users/${user}/favorites/remove/${image.id}`,
+        `${process.env.REACT_APP_API}/api/users/${user}/favorites/remove/${image.id}`,
         {
           method: 'PUT',
         }
@@ -59,7 +59,7 @@ const ImageDetails = (props) => {
         .catch((err) => console.log(err));
     } else {
       fetch(
-        `http://localhost:3001/api/users/${user}/favorites/add/${image.id}`,
+        `${process.env.REACT_APP_API}/api/users/${user}/favorites/add/${image.id}`,
         {
           method: 'PUT',
         }
@@ -73,7 +73,7 @@ const ImageDetails = (props) => {
   };
 
   const handleDelete = () => {
-    fetch(`http://localhost:3001/api/photos/${image.id}`, {
+    fetch(`${process.env.REACT_APP_API}/api/photos/${image.id}`, {
       method: 'DELETE',
     })
       .then(() => {
@@ -93,7 +93,7 @@ const ImageDetails = (props) => {
       editBody['description'] = editDescription;
     if (image.tags !== editTags[0]) editBody['tags'] = editTags[0];
 
-    fetch(`http://localhost:3001/api/photos/${image.id}`, {
+    fetch(`${process.env.REACT_APP_API}/api/photos/${image.id}`, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
@@ -225,7 +225,7 @@ const ImageDetails = (props) => {
             style={{ maxWidth: '1024px', width: '100%', height: '60vh' }}
           >
             <Image
-              cloudName='devm7fql3'
+              cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}
               publicId={image.public_id}
               style={{ ...imageDimensions }}
             />

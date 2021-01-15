@@ -34,7 +34,7 @@ const Home = (props) => {
   };
 
   const handleSearch = () => {
-    fetch(`http://localhost:3001/api/photos/search`, {
+    fetch(`${process.env.REACT_APP_API}/api/photos/search`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -66,11 +66,11 @@ const Home = (props) => {
   const fetchImages = (imageList = null) => {
     let fetch_url = '';
     if (!imageList) {
-      fetch_url = 'http://localhost:3001/api/photos/all';
+      fetch_url = `${process.env.REACT_APP_API}/api/photos/all`;
     } else {
       imageList = imageList.map((id) => id.toString());
       fetch_url =
-        'http://localhost:3001/api/photos/batch/' + imageList.join(',');
+        `${process.env.REACT_APP_API}/api/photos/batch/` + imageList.join(',');
     }
     fetch(fetch_url)
       .then((res) => res.json())
@@ -167,7 +167,7 @@ const Home = (props) => {
                 >
                   <Image
                     id={originalData.public_id}
-                    cloudName='devm7fql3'
+                    cloudName={process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}
                     public_id={originalData.public_id}
                     width={width}
                     height={height}

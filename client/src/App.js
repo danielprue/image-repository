@@ -28,7 +28,7 @@ function App() {
   useEffect(() => {
     let token = localStorage.getItem('token');
     if (token) {
-      fetch(`http://localhost:3001/api/auth/verify/${token}`)
+      fetch(`${process.env.REACT_APP_API}/api/auth/verify/${token}`)
         .then((res) => res.json())
         .then((status) => {
           if (status.expired) {
@@ -45,7 +45,7 @@ function App() {
   useEffect(() => {
     if (loginStatus) {
       let user = localStorage.getItem('user');
-      fetch(`http://localhost:3001/api/users/${user}/favorites`)
+      fetch(`${process.env.REACT_APP_API}/api/users/${user}/favorites`)
         .then((res) => res.json())
         .then((favs) => {
           setUserFavs(favs.map((image) => image.id));
@@ -66,7 +66,9 @@ function App() {
   const handleLogout = () => {
     if (localStorage.getItem('isGuest')) {
       fetch(
-        `http://localhost:3001/api/auth/guest/${localStorage.getItem('user')}`,
+        `${process.env.REACT_APP_API}/api/auth/guest/${localStorage.getItem(
+          'user'
+        )}`,
         {
           method: 'DELETE',
         }
@@ -83,7 +85,7 @@ function App() {
   };
 
   const handleLoginSubmit = (values) => {
-    fetch(`http://localhost:3001/api/auth/login`, {
+    fetch(`${process.env.REACT_APP_API}/api/auth/login`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -117,7 +119,7 @@ function App() {
   };
 
   const handleRegisterSubmit = (values) => {
-    fetch(`http://localhost:3001/api/auth/register`, {
+    fetch(`${process.env.REACT_APP_API}/api/auth/register`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -153,7 +155,7 @@ function App() {
   };
 
   const handleCreateGuest = () => {
-    fetch(`http://localhost:3001/api/auth/guest/create`)
+    fetch(`${process.env.REACT_APP_API}/api/auth/guest/create`)
       .then((res) => res.json())
       .then((result) => {
         if (result.token) {
@@ -248,7 +250,7 @@ function App() {
                               async validator(_, value) {
                                 let userquery;
                                 await fetch(
-                                  `http://localhost:3001/api/users/name/${value}`
+                                  `${process.env.REACT_APP_API}/api/users/name/${value}`
                                 )
                                   .then((res) => res.json())
                                   .then((data) => {
