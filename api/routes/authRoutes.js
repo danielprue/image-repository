@@ -28,7 +28,7 @@ router.post('/register', (req, res, next) => {
       res.status(201).json({ ...saved, password: '**********', token });
     })
     .catch((error) => {
-      next(error);
+      console.log(error);
     });
 });
 
@@ -41,7 +41,7 @@ router.post('/login', (req, res, next) => {
       return sendResultToUser(req, res, next, user, password);
     })
     .catch((error) => {
-      next(error);
+      console.log(error);
     });
 });
 
@@ -79,7 +79,6 @@ router.delete('/guest/:id', (req, res, next) => {
 // adds guest user, then deletes it in an hour
 router.get('/guest/create', async (req, res, next) => {
   const userInfo = await guestNumber();
-  console.log(userInfo);
   const hash = bcrypt.hashSync(userInfo.password, 5);
   userInfo.password = hash;
 

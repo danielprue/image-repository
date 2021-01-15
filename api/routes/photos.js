@@ -47,14 +47,11 @@ router.get('/tags/:tag', (req, res, next) => {
     .then((photos) => res.status(200).json(photos))
     .catch((err) => {
       console.log(err);
-      next(err);
     });
 });
 
 router.post('/upload', (req, res, next) => {
   const photo = req.body;
-  console.log(req.body);
-  console.log(req.headers);
   Photos.addPhoto(photo)
     .then((photo) => res.status(200).json(photo))
     .catch((err) => console.log(err));
@@ -63,13 +60,11 @@ router.post('/upload', (req, res, next) => {
 router.post('/search', (req, res, next) => {
   const { search_term, search_type, user } = req.body;
   if (search_type === 'all-images') {
-    console.log(search_term, search_type);
     Photos.getPhotosBySearch(search_term)
       .then((photos) => res.status(200).json(photos))
       .catch((err) => console.log(err));
   } else if (search_type === 'my-favs') {
     User.getUserFavorites(user).then((favs) => {
-      console.log(favs);
       Photos.getFavPhotosBySearch(search_term, favs.favorites)
         .then((photos) => res.status(200).json(photos))
         .catch((err) => console.log(err));
@@ -87,9 +82,7 @@ router.delete('/:photoid', (req, res, next) => {
   Photos.getPublicIdById(photoid).then((pid) => {
     if (!skipCloudinaryDelete.includes(pid.public_id)) {
       cloudinary.v2.uploader
-        .destroy(pid.public_id, (error, result) => {
-          console.log(error, result);
-        })
+        .destroy(pid.public_id, (error, result) => {})
         .catch((err) => console.log(err));
     }
   });
@@ -102,7 +95,6 @@ router.put('/:photoid', (req, res, next) => {
   const { photoid } = req.params;
   const { updates } = req.body;
 
-  console.log(updates);
   Photos.updatePhoto(photoid, updates).then((numRows) => {
     res
       .status(200)

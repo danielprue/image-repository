@@ -1,5 +1,4 @@
 const userdb = require('../dbConfig');
-const knexfile = require('../knexfile');
 // id (PK)
 // username
 // password
@@ -62,12 +61,6 @@ function removeFavorite(user_id, photo_id) {
     .update({
       favorites: userdb.raw('array_remove(favorites, ?)', [photo_id]),
     });
-  // const favs = userdb('users')
-  //   .select('favorites')
-  //   .where('id', user_id)
-  //   .filter((item) => item != photo_id);
-  // console.log(favs);
-  // return userdb('users').where('id', user_id).update('favorites', favs);
 }
 
 // deleteUser -- remove row from users table with matching id
