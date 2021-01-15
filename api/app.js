@@ -6,7 +6,6 @@ var logger = require('morgan');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 
-var indexRouter = require('./routes/index');
 var testAPIRouter = require('./routes/testAPI');
 var userRouter = require('./routes/users');
 var authRouter = require('./routes/authRoutes');
@@ -24,7 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/testAPI', testAPIRouter);
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);

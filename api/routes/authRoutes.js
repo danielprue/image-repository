@@ -13,7 +13,7 @@ const { guestSeed } = require('../utils/guestSeed');
 const { deleteGuest } = require('../utils/deleteGuest');
 
 //save this as a config later
-const jwtSecret = 'save this as a env var later';
+const jwtSecret = process.env.JWT_SECRET;
 
 // register a new user
 router.post('/register', (req, res, next) => {
