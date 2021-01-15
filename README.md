@@ -23,30 +23,19 @@ A list of live features in the current version:
 
 ## Contributing
 
-Information about running a development version LINK FILE HERE
+Information about running a local development environment [here](./docs/local_env_instructions.md)
 
-Guidelines for contributing LINK FILE HERE
+Guidelines for contributing [here](./docs/contributing.md)
 
 ## TODO
 
-This project is still in development. For a list of features and bugs that need to be addressed, LINK FILE HERE
-
-* Separate table for favorites and tags
-* Loading status during upload, other async processes
-* 500 on guest delete
-* click tag to filter by tag
-* state management
-* security features
-* view account details
-* guest tour
-* fix search functionality
-* modularize components
+This project is still in development. For a list of features and bugs that need to be addressed [here](./docs/todo.md)
 
 ## Technologies
 
 This application is written in JavaScript, using a React framework for the front end, an Express back end and a Postgres database.
-For Detailed information about the tech stack for this project, LINK FILE HERE
+For Detailed information about the tech stack for this project [here](./docs/technologies.md)
 
 ## API
 
-Detailed information about the API endpoints LINK FILE HERE
+Detailed information about the API endpoints [here](./docs/api.md)
