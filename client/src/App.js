@@ -48,7 +48,6 @@ function App() {
       fetch(`http://localhost:3001/api/users/${user}/favorites`)
         .then((res) => res.json())
         .then((favs) => {
-          console.log(favs);
           setUserFavs(favs.map((image) => image.id));
         })
         .catch((err) => console.log(err));
@@ -112,7 +111,6 @@ function App() {
               errors: ['Username and Password do not match'],
             },
           ]);
-          // setInvalidCredentials(true);
         }
       })
       .catch((err) => console.log(err));
@@ -149,7 +147,6 @@ function App() {
     form.resetFields();
     setIsLoginModalVisible(false);
     setIsRegistrationModalVisible(false);
-    // setInvalidCredentials(false);
 
     const selected = document.querySelector('.ant-menu-item-selected');
     if (selected) selected.classList.remove('ant-menu-item-selected');

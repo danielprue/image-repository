@@ -92,7 +92,6 @@ const ImageDetails = (props) => {
     if (image.description !== editDescription)
       editBody['description'] = editDescription;
     if (image.tags !== editTags[0]) editBody['tags'] = editTags[0];
-    console.log(editBody);
 
     fetch(`http://localhost:3001/api/photos/${image.id}`, {
       method: 'PUT',
@@ -137,7 +136,6 @@ const ImageDetails = (props) => {
       setEditDescription(image.description);
       setEditTags({ 0: image.tags });
     }
-    console.log(image, localStorage.getItem('user'));
   }, [image]);
 
   useEffect(() => {

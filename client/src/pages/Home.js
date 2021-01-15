@@ -48,7 +48,6 @@ const Home = (props) => {
     })
       .then((res) => res.json())
       .then((searchResults) => {
-        console.log(searchResults);
         setImages(
           searchResults.rows.map((pic) => {
             return {
