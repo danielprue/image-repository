@@ -1,5 +1,8 @@
 # Image Repository
 
+This repository is deprecated. A supported version of this project can be found: 
+[Front End](https://github.com/danielprue/image-repository-fe) | [Back End](https://github.com/danielprue/image-repository-be)
+
 A react application for searching for photos publicly uploaded by users. A link to the current version will be here when deployment is complete.
 
 ## Guest Access
